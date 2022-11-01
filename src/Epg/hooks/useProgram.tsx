@@ -43,6 +43,11 @@ export function useProgram<T extends ProgramItem>({
     return TIME_FORMAT.HOURS_MIN;
   };
 
+  const setDayMonthFormat = () => {
+    if (isBaseTimeFormat) return TIME_FORMAT.BASE_HOURS_TIME;
+    return TIME_FORMAT.DAY_MONTH;
+  };
+
   const getRTLSinceTime = (since: string | number | Date) =>
     isRTL ? till : since;
   const getRTLTillTime = (till: string | number | Date) =>
@@ -61,6 +66,7 @@ export function useProgram<T extends ProgramItem>({
     isRTL,
     formatTime,
     set12HoursTimeFormat,
+    setDayMonthFormat,
     getRTLSinceTime,
     getRTLTillTime,
     styles: { width, position: newPosition },
