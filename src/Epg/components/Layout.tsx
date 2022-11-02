@@ -135,6 +135,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         numberOfTicksPerSubRange,
         isBaseTimeFormat,
         subTimeWidth,
+        timeStep,
       };
       if (renderTimeline) {
         return renderTimeline({ ...timeProps, ...props });
