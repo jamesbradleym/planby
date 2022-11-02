@@ -1,4 +1,4 @@
-import { differenceInMinutes, getTime } from "date-fns";
+import { getTime } from "date-fns";
 
 // Import interfaces
 import { Channel, Program } from "./interfaces";
