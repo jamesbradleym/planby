@@ -20,6 +20,7 @@ interface useLayoutProps {
   sidebarWidth: number;
   startDate: DateTime;
   endDate: DateTime;
+  timeStep: string;
 }
 
 export function useLayout({
@@ -29,6 +30,7 @@ export function useLayout({
   endDate,
   subTimeWidth,
   sidebarWidth,
+  timeStep,
 }: useLayoutProps) {
   const useIsomorphicEffect = useIsomorphicLayoutEffect();
 
@@ -71,12 +73,13 @@ export function useLayout({
         newDate,
         startDate,
         endDate,
-        subTimeWidth
+        subTimeWidth,
+        timeStep
       );
       const scrollNow = scrollPosition - clientWidth / 2 + sidebarWidth;
       scrollBoxRef.current.scrollLeft = scrollNow;
     }
-  }, [isToday, startDate, endDate, width, sidebarWidth, subTimeWidth]);
+  }, [isToday, startDate, endDate, width, sidebarWidth, subTimeWidth, timeStep]);
 
   const handleOnScrollTop = React.useCallback(
     (value: number = subTimeWidth) => {

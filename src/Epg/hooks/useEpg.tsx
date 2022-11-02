@@ -98,6 +98,7 @@ export function useEpg({
     width,
     height,
     subTimeWidth,
+    timeStep,
   });
 
   const { scrollX, scrollY, layoutWidth, layoutHeight } = layoutProps;
