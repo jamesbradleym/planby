@@ -85,13 +85,13 @@ test("should render Epg coponent properly", () => {
 test("should set initial Epg props", () => {
   const epgOptions = getEpgProps({ width: 1000, height: 600 });
   const layoutOptions = {
-    dayWidth: 7200,
+    timeWidth: 7200,
     startDate: getTestTimeDate("01"),
     endDate: getTestTimeDate("23"),
-    hourWidth: 300,
+    subTimeWidth: 300,
     isBaseTimeFormat: true,
-    numberOfHoursInDay: 22,
-    offsetStartHoursRange: 1,
+    numberOfTicksPerRange: 22,
+    offsetStartTimeRange: 1,
   };
   renderEpg({
     epgOptions,
@@ -110,11 +110,11 @@ test("should set initial Epg props", () => {
   expect(inTimeline.getByText("1:00am")).toBeInTheDocument();
   expect(inTimeline.getAllByTestId("timeline-item")).toHaveLength(22);
   expect(inTimeline.getAllByTestId("timeline-item")[0]).toHaveStyle(
-    `width: ${layoutOptions.hourWidth}px`
+    `width: ${layoutOptions.subTimeWidth}px`
   );
 
   const content = screen.getByTestId("content");
-  expect(content).toHaveStyle(`width: ${layoutOptions.dayWidth}px`);
+  expect(content).toHaveStyle(`width: ${layoutOptions.timeWidth}px`);
 });
 
 test("should show loader in Epg layout", () => {

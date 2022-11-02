@@ -13,16 +13,16 @@ import { useInterval } from "../../hooks";
 interface useLineProps {
   startDate: DateTime;
   endDate: DateTime;
-  dayWidth: number;
-  hourWidth: number;
+  timeWidth: number;
+  subTimeWidth: number;
   sidebarWidth: number;
 }
 
 export function useLine({
   startDate,
   endDate,
-  dayWidth,
-  hourWidth,
+  timeWidth,
+  subTimeWidth,
   sidebarWidth,
 }: useLineProps) {
   const initialState =
@@ -31,17 +31,17 @@ export function useLine({
       new Date(),
       startDate,
       endDate,
-      hourWidth
+      subTimeWidth
     ) + sidebarWidth;
   const [positionX, setPositionX] = React.useState<number>(() => initialState);
 
-  const isDayEnd = positionX <= dayWidth;
+  const isDayEnd = positionX <= timeWidth;
   const isScrollX = React.useMemo(() => (isDayEnd ? PROGRAM_REFRESH : null), [
     isDayEnd,
   ]);
 
   useInterval(() => {
-    const offset = hourWidth / HOUR_IN_MINUTES;
+    const offset = subTimeWidth / HOUR_IN_MINUTES;
     const positionOffset = offset * 2;
     setPositionX((prev) => prev + positionOffset);
   }, isScrollX);
@@ -53,11 +53,11 @@ export function useLine({
       new Date(),
       startDate,
       endDate,
-      hourWidth
+      subTimeWidth
     );
     const newPositionX = positionX + sidebarWidth;
     setPositionX(newPositionX);
-  }, [startDate, endDate, sidebarWidth, hourWidth]);
+  }, [startDate, endDate, sidebarWidth, subTimeWidth]);
 
   return { positionX };
 }

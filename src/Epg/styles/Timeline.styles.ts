@@ -36,7 +36,7 @@ export const TimelineDivider = styled.div<{ width: number; theme?: Theme }>`
 
 export const TimelineWrapper = styled.div<{
   isSidebar: boolean;
-  dayWidth: number;
+  timeWidth: number;
   sidebarWidth: number;
   theme?: Theme;
 }>`
@@ -46,7 +46,7 @@ export const TimelineWrapper = styled.div<{
   z-index: 5;
   display: flex;
   height: ${ITEM_HEIGHT - 20}px;
-  width: ${({ dayWidth }) => dayWidth}px;
+  width: ${({ timeWidth }) => timeWidth}px;
   background: ${({ theme }) => theme.primary[900]};
 `;
 

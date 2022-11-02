@@ -218,7 +218,7 @@ Available options in useEpg
 | `height`           | `number`  | optional | Epg height                                                                                                                                                       |
 | `sidebarWidth`     | `number`  | optional | Width of the sidebar with channels                                                                                                                               |
 | `itemHeight`       | `number`  | optional | Height of channels and programs in the EPG. Default value is 80                                                                                                  |
-| `dayWidth`         | `number`  | optional | Width of the day. Default value is 7200. Calculation to set up day width with own hour width value eg. 24h \* 300px(your custom hour width) = 7200px -> dayWidth |
+| `timeWidth`         | `number`  | optional | Width of the day. Default value is 7200. Calculation to set up day width with own hour width value eg. 24h \* 300px(your custom hour width) = 7200px -> timeWidth |
 | `startDate`        | `string`  | optional | Date format `2022/02/02` or `2022-02-02T00:00:00`. You can set your own start time eg. `2022-02-02T10:00:00`, `2022-02-02T14:00:00` etc. Full clock hours only.  |
 | `endtDate`         | `string`  | optional | Date format `2022-02-02T00:00:00`. You can set your own end time eg. `2022-02-02T15:00:00`, `2022-02-02T:20:00` etc. Full clock hours only.                      |
 | `isBaseTimeFormat` | `boolean` | optional | Convert to 12 hours format eg. `2:00am, 4:00pm` etc. Default value is false.                                                                                     |
@@ -600,31 +600,31 @@ import {
 interface TimelineProps {
   isBaseTimeFormat: boolean;
   isSidebar: boolean;
-  dayWidth: number;
-  hourWidth: number;
-  numberOfHoursInDay: number;
-  offsetStartHoursRange: number;
+  timeWidth: number;
+  subTimeWidth: number;
+  numberOfTicksPerRange: number;
+  offsetStartTimeRange: number;
   sidebarWidth: number;
 }
 
 export function Timeline({
   isBaseTimeFormat,
   isSidebar,
-  dayWidth,
-  hourWidth,
-  numberOfHoursInDay,
-  offsetStartHoursRange,
+  timeWidth,
+  subTimeWidth,
+  numberOfTicksPerRange,
+  offsetStartTimeRange,
   sidebarWidth,
 }: TimelineProps) {
   const { time, dividers, formatTime } = useTimeline(
-    numberOfHoursInDay,
+    numberOfTicksPerRange,
     isBaseTimeFormat
   );
 
   const renderTime = (index: number) => (
-    <TimelineBox key={index} width={hourWidth}>
+    <TimelineBox key={index} width={subTimeWidth}>
       <TimelineTime>
-        {formatTime(index + offsetStartHoursRange).toLowerCase()}
+        {formatTime(index + offsetStartTimeRange).toLowerCase()}
       </TimelineTime>
       <TimelineDividers>{renderDividers()}</TimelineDividers>
     </TimelineBox>
@@ -632,12 +632,12 @@ export function Timeline({
 
   const renderDividers = () =>
     dividers.map((_, index) => (
-      <TimelineDivider key={index} width={hourWidth} />
+      <TimelineDivider key={index} width={subTimeWidth} />
     ));
 
   return (
     <TimelineWrapper
-      dayWidth={dayWidth}
+      timeWidth={timeWidth}
       sidebarWidth={sidebarWidth}
       isSidebar={isSidebar}
     >
@@ -694,10 +694,10 @@ interface TimelineProps {
   isRTL: boolean;
   isBaseTimeFormat: boolean;
   isSidebar: boolean;
-  dayWidth: number;
-  hourWidth: number;
-  numberOfHoursInDay: number;
-  offsetStartHoursRange: number;
+  timeWidth: number;
+  subTimeWidth: number;
+  numberOfTicksPerRange: number;
+  offsetStartTimeRange: number;
   sidebarWidth: number;
 }
 
@@ -705,21 +705,21 @@ export function Timeline({
   isRTL,
   isBaseTimeFormat,
   isSidebar,
-  dayWidth,
-  hourWidth,
-  numberOfHoursInDay,
-  offsetStartHoursRange,
+  timeWidth,
+  subTimeWidth,
+  numberOfTicksPerRange,
+  offsetStartTimeRange,
   sidebarWidth,
 }: TimelineProps) {
   const { time, dividers, formatTime } = useTimeline(
-    numberOfHoursInDay,
+    numberOfTicksPerRange,
     isBaseTimeFormat
   );
 
   const renderTime = (index: number) => (
-    <TimelineBox key={index} width={hourWidth}>
+    <TimelineBox key={index} width={subTimeWidth}>
       <TimelineTime isBaseTimeFormat={isBaseTimeFormat} isRTL={isRTL}>
-        {formatTime(index + offsetStartHoursRange).toLowerCase()}
+        {formatTime(index + offsetStartTimeRange).toLowerCase()}
       </TimelineTime>
       <TimelineDividers>{renderDividers()}</TimelineDividers>
     </TimelineBox>

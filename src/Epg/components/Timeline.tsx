@@ -21,10 +21,10 @@ interface TimelineProps {
   isRTL?: boolean;
   isBaseTimeFormat: BaseTimeFormat;
   isSidebar: boolean;
-  dayWidth: number;
-  hourWidth: number;
-  numberOfHoursInDay: number;
-  offsetStartHoursRange: number;
+  timeWidth: number;
+  subTimeWidth: number;
+  numberOfTicksPerRange: number;
+  offsetStartTimeRange: number;
   sidebarWidth: number;
 }
 
@@ -32,21 +32,21 @@ export function Timeline({
   isRTL,
   isBaseTimeFormat,
   isSidebar,
-  dayWidth,
-  hourWidth,
-  numberOfHoursInDay,
-  offsetStartHoursRange,
+  timeWidth,
+  subTimeWidth,
+  numberOfTicksPerRange,
+  offsetStartTimeRange,
   sidebarWidth,
 }: TimelineProps) {
   const { time, dividers, formatTime } = useTimeline(
-    numberOfHoursInDay,
+    numberOfTicksPerRange,
     isBaseTimeFormat
   );
 
   const renderTime = (index: number) => (
-    <TimelineBox data-testid="timeline-item" key={index} width={hourWidth}>
+    <TimelineBox data-testid="timeline-item" key={index} width={subTimeWidth}>
       <TimelineTime isBaseTimeFormat={isBaseTimeFormat} isRTL={isRTL}>
-        {formatTime(index + offsetStartHoursRange)}
+        {formatTime(index + offsetStartTimeRange)}
       </TimelineTime>
       <TimelineDividers>{renderDividers()}</TimelineDividers>
     </TimelineBox>
@@ -54,13 +54,13 @@ export function Timeline({
 
   const renderDividers = () =>
     dividers.map((_, index) => (
-      <TimelineDivider key={index} width={hourWidth} />
+      <TimelineDivider key={index} width={subTimeWidth} />
     ));
 
   return (
     <TimelineWrapper
       data-testid="timeline"
-      dayWidth={dayWidth}
+      timeWidth={timeWidth}
       sidebarWidth={sidebarWidth}
       isSidebar={isSidebar}
     >

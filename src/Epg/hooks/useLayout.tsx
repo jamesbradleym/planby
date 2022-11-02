@@ -16,7 +16,7 @@ import {
 interface useLayoutProps {
   height?: number;
   width?: number;
-  hourWidth: number;
+  subTimeWidth: number;
   sidebarWidth: number;
   startDate: DateTime;
   endDate: DateTime;
@@ -27,7 +27,7 @@ export function useLayout({
   width,
   startDate,
   endDate,
-  hourWidth,
+  subTimeWidth,
   sidebarWidth,
 }: useLayoutProps) {
   const useIsomorphicEffect = useIsomorphicLayoutEffect();
@@ -71,41 +71,41 @@ export function useLayout({
         newDate,
         startDate,
         endDate,
-        hourWidth
+        subTimeWidth
       );
       const scrollNow = scrollPosition - clientWidth / 2 + sidebarWidth;
       scrollBoxRef.current.scrollLeft = scrollNow;
     }
-  }, [isToday, startDate, endDate, width, sidebarWidth, hourWidth]);
+  }, [isToday, startDate, endDate, width, sidebarWidth, subTimeWidth]);
 
   const handleOnScrollTop = React.useCallback(
-    (value: number = hourWidth) => {
+    (value: number = subTimeWidth) => {
       if (scrollBoxRef?.current) {
         const top = scrollBoxRef.current.scrollTop + value;
         scrollBoxRef.current.scrollTop = top;
       }
     },
-    [hourWidth]
+    [subTimeWidth]
   );
 
   const handleOnScrollRight = React.useCallback(
-    (value: number = hourWidth) => {
+    (value: number = subTimeWidth) => {
       if (scrollBoxRef?.current) {
         const right = scrollBoxRef.current.scrollLeft + value;
         scrollBoxRef.current.scrollLeft = right;
       }
     },
-    [hourWidth]
+    [subTimeWidth]
   );
 
   const handleOnScrollLeft = React.useCallback(
-    (value: number = hourWidth) => {
+    (value: number = subTimeWidth) => {
       if (scrollBoxRef?.current) {
         const left = scrollBoxRef.current.scrollLeft - value;
         scrollBoxRef.current.scrollLeft = left;
       }
     },
-    [hourWidth]
+    [subTimeWidth]
   );
 
   const handleResizeDebounced = useDebouncedCallback(
