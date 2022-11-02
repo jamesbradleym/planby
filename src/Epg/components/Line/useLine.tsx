@@ -5,7 +5,7 @@ import { startOfDay } from "date-fns";
 import { DateTime } from "../../helpers/types";
 
 // Import helpers
-import { HOUR_IN_MINUTES, PROGRAM_REFRESH, getPositionX } from "../../helpers";
+import { MINUTES_IN_HOUR, PROGRAM_REFRESH, getPositionX } from "../../helpers";
 
 // Import hooks
 import { useInterval } from "../../hooks";
@@ -41,7 +41,7 @@ export function useLine({
   ]);
 
   useInterval(() => {
-    const offset = subTimeWidth / HOUR_IN_MINUTES;
+    const offset = subTimeWidth / MINUTES_IN_HOUR;
     const positionOffset = offset * 2;
     setPositionX((prev) => prev + positionOffset);
   }, isScrollX);
