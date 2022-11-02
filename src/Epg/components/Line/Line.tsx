@@ -17,6 +17,7 @@ interface LineProps {
   timeWidth: number;
   subTimeWidth: number;
   sidebarWidth: number;
+  timeStep: string;
 }
 
 const { Box } = LineStyled;
@@ -28,6 +29,7 @@ export function Line({
   timeWidth,
   subTimeWidth,
   sidebarWidth,
+  timeStep,
 }: LineProps) {
   const { positionX } = useLine({
     startDate,
@@ -35,6 +37,7 @@ export function Line({
     timeWidth,
     subTimeWidth,
     sidebarWidth,
+    timeStep,
   });
 
   const date = new Date(startDate);

@@ -16,6 +16,7 @@ interface useLineProps {
   timeWidth: number;
   subTimeWidth: number;
   sidebarWidth: number;
+  timeStep: string;
 }
 
 export function useLine({
@@ -24,6 +25,7 @@ export function useLine({
   timeWidth,
   subTimeWidth,
   sidebarWidth,
+  timeStep,
 }: useLineProps) {
   const initialState =
     getPositionX(
@@ -31,7 +33,8 @@ export function useLine({
       new Date(),
       startDate,
       endDate,
-      subTimeWidth
+      subTimeWidth,
+      timeStep
     ) + sidebarWidth;
   const [positionX, setPositionX] = React.useState<number>(() => initialState);
 
@@ -53,11 +56,12 @@ export function useLine({
       new Date(),
       startDate,
       endDate,
-      subTimeWidth
+      subTimeWidth,
+      timeStep,
     );
     const newPositionX = positionX + sidebarWidth;
     setPositionX(newPositionX);
-  }, [startDate, endDate, sidebarWidth, subTimeWidth]);
+  }, [startDate, endDate, sidebarWidth, subTimeWidth, timeStep]);
 
   return { positionX };
 }
