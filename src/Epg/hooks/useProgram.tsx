@@ -66,7 +66,7 @@ export function useProgram<T extends ProgramItem>({
     isRTL,
     formatTime,
     set12HoursTimeFormat,
-    setDayMonthFormat,
+    setMonthDayFormat,
     getRTLSinceTime,
     getRTLTillTime,
     styles: { width, position: newPosition },
