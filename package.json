@@ -1,11 +1,11 @@
 {
-  "name": "planby",
+  "name": "planby-jb",
   "author": "Karol Kozer",
   "version": "1.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamesbradleym/planby"
+    "url": "git+https://github.com/jamesbradleym/planby.git"
   },
   "homepage": "https://planby.netlify.app",
   "funding": {
@@ -44,15 +44,15 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "module": "dist/planby.esm.js",
+  "module": "dist/planby-jb.esm.js",
   "bundlewatch": {
     "files": [
       {
-        "path": "dist/planby.cjs.production.min.js",
+        "path": "dist/planby-jb.cjs.production.min.js",
         "maxSize": "30kB"
       },
       {
-        "path": "dist/planby.esm.js",
+        "path": "dist/planby-jb.esm.js",
         "maxSize": "30kB"
       }
     ]
@@ -88,5 +88,9 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.6.3"
+  },
+  "description": "<div align=\"center\" style=\"margin-bottom: 10px\">\r   <a href=\"https://www.npmjs.com/package/planby\">\r     <img src=\"https://i.postimg.cc/J0XMPHNQ/planby-logo.png\" alt=\"Planby logo\" />\r   </a>\r </div>",
+  "bugs": {
+    "url": "https://github.com/jamesbradleym/planby/issues"
   }
 }
