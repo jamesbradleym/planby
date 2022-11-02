@@ -43,9 +43,9 @@ export function useProgram<T extends ProgramItem>({
     return TIME_FORMAT.HOURS_MIN;
   };
 
-  const setDayMonthFormat = () => {
+  const setMonthDayFormat = () => {
     if (isBaseTimeFormat) return TIME_FORMAT.BASE_HOURS_TIME;
-    return TIME_FORMAT.DAY_MONTH;
+    return TIME_FORMAT.MONTH_DAY;
   };
 
   const getRTLSinceTime = (since: string | number | Date) =>
