@@ -59,7 +59,7 @@ export const getTimeWidthResources = ({
     );
   }
 
-  function startOfTime(dateTime, timeStep) {
+  function startOfTime(dateTime:DateTime, timeStep) {
     switch (timeStep) {
       case "hour":
         return startOfDay(dateTime);
