@@ -49,7 +49,7 @@ export const getTimeWidthResources = ({
   endDate,
   timeStep,
   subTicks
-}: timeWidth) => {
+}: TimeWidth) => {
   const startDateTime = getDate(startDate);
   const endDateTime = getDate(endDate);
 
