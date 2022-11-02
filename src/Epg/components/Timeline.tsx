@@ -24,6 +24,7 @@ interface TimelineProps {
   timeWidth: number;
   subTimeWidth: number;
   numberOfTicksPerRange: number;
+  numberOfTicksPerSubRange: number;
   offsetStartTimeRange: number;
   sidebarWidth: number;
 }
