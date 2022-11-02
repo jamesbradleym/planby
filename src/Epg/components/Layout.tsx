@@ -24,10 +24,10 @@ interface RenderTimeline {
   isSidebar: boolean;
   isRTL: boolean;
   sidebarWidth: number;
-  hourWidth: number;
-  numberOfHoursInDay: number;
-  offsetStartHoursRange: number;
-  dayWidth: number;
+  subTimeWidth: number;
+  numberOfTicksPerRange: number;
+  offsetStartTimeRange: number;
+  timeWidth: number;
 }
 
 interface LayoutProps {
@@ -36,10 +36,10 @@ interface LayoutProps {
   startDate: DateTime;
   endDate: DateTime;
   scrollY: number;
-  dayWidth: number;
-  hourWidth: number;
-  numberOfHoursInDay: number;
-  offsetStartHoursRange: number;
+  timeWidth: number;
+  subTimeWidth: number;
+  numberOfTicksPerRange: number;
+  offsetStartTimeRange: number;
   sidebarWidth: number;
   itemHeight: number;
   onScroll: (
@@ -66,8 +66,8 @@ const { ScrollBox, Content } = EpgStyled;
 export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   (props, scrollBoxRef) => {
     const { channels, programs, startDate, endDate, scrollY } = props;
-    const { dayWidth, hourWidth, sidebarWidth, itemHeight } = props;
-    const { numberOfHoursInDay, offsetStartHoursRange } = props;
+    const { timeWidth, subTimeWidth, sidebarWidth, itemHeight } = props;
+    const { numberOfTicksPerRange, offsetStartTimeRange } = props;
     const {
       isSidebar = true,
       isTimeline = true,
@@ -121,14 +121,14 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         sidebarWidth,
         isSidebar,
         isRTL,
-        dayWidth,
-        numberOfHoursInDay,
+        timeWidth,
+        numberOfTicksPerRange,
       };
       const timeProps = {
-        offsetStartHoursRange,
-        numberOfHoursInDay,
+        offsetStartTimeRange,
+        numberOfTicksPerRange,
         isBaseTimeFormat,
-        hourWidth,
+        subTimeWidth,
       };
       if (renderTimeline) {
         return renderTimeline({ ...timeProps, ...props });
@@ -140,8 +140,8 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
       <ScrollBox isRTL={isRTL} ref={scrollBoxRef} onScroll={onScroll}>
         {isLine && isFuture && (
           <Line
-            dayWidth={dayWidth}
-            hourWidth={hourWidth}
+            timeWidth={timeWidth}
+            subTimeWidth={subTimeWidth}
             sidebarWidth={sidebarWidth}
             startDate={startDate}
             endDate={endDate}
@@ -164,7 +164,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
           data-testid="content"
           sidebarWidth={sidebarWidth}
           isSidebar={isSidebar}
-          width={dayWidth}
+          width={timeWidth}
           height={contentHeight}
         >
           {programs.map((program) =>

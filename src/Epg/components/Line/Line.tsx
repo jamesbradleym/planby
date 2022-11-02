@@ -14,8 +14,8 @@ interface LineProps {
   height: number;
   startDate: DateTime;
   endDate: DateTime;
-  dayWidth: number;
-  hourWidth: number;
+  timeWidth: number;
+  subTimeWidth: number;
   sidebarWidth: number;
 }
 
@@ -25,15 +25,15 @@ export function Line({
   height,
   startDate,
   endDate,
-  dayWidth,
-  hourWidth,
+  timeWidth,
+  subTimeWidth,
   sidebarWidth,
 }: LineProps) {
   const { positionX } = useLine({
     startDate,
     endDate,
-    dayWidth,
-    hourWidth,
+    timeWidth,
+    subTimeWidth,
     sidebarWidth,
   });
 

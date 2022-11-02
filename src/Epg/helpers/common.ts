@@ -1,5 +1,5 @@
 import { useLayoutEffect, useEffect } from "react";
-import { differenceInHours, startOfDay } from "date-fns";
+import { differenceInHours, differenceInDays, differenceInWeeks, differenceInMonths, differenceInQuarters, startOfDay, startOfWeek, startOfMonth, startOfQuarter, startOfYear } from "date-fns";
 import { HOURS_IN_DAY } from "./variables";
 
 type DateTime = string | number | Date;
@@ -31,20 +31,23 @@ export const getProgramOptions = <T extends ProgramOptions>(program: T) => {
 export const useIsomorphicLayoutEffect = () =>
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-export const getHourWidth = (dayWidth: number) => dayWidth / HOURS_IN_DAY;
+export const getSubTimeWidth = (timeWidth: number) => timeWidth / HOURS_IN_DAY;
 
 export const getDate = (date: DateTime) => new Date(date);
 
 const abs = (num: number) => Math.abs(num);
-interface DayWidth {
-  dayWidth: number;
+interface TimeWidth {
+  timeWidth: number;
   startDate: DateTime;
   endDate: DateTime;
+  timeStep: string;
 }
-export const getDayWidthResources = ({
-  dayWidth,
+export const getTimeWidthResources = ({
+  timeWidth,
   startDate,
   endDate,
+  timeStep,
+  subTicks
 }: DayWidth) => {
   const startDateTime = getDate(startDate);
   const endDateTime = getDate(endDate);
@@ -55,19 +58,56 @@ export const getDayWidthResources = ({
     );
   }
 
-  const offsetStartHoursRange = differenceInHours(
+  function startOfTime(dateTime, timeStep) {
+    switch (timeStep) {
+      case "hour":
+        return startOfDay(endDateTime, startDateTime);
+      case "day":
+        return startOfWeek(endDateTime, startDateTime);
+      case "week":
+        return startOfMonth(endDateTime, startDateTime);
+      case "month":
+        return startOfQuarter(endDateTime, startDateTime);
+      case "quarter":
+        return startOfYear(endDateTime, startDateTime);
+      default:
+        return differenceInHours(endDateTime, startDateTime);
+    }
+  }
+
+  function differenceInTime(endDateTime, startDateTime, timeStep) {
+    switch (timeStep) {
+      case "hour":
+        return differenceInHours(endDateTime, startDateTime);
+      case "day":
+        return differenceInDays(endDateTime, startDateTime);
+      case "week":
+        return differenceInWeeks(endDateTime, startDateTime);
+      case "month":
+        return differenceInMonths(endDateTime, startDateTime);
+      case "quarter":
+        return differenceInQuarters(endDateTime, startDateTime);
+      default:
+        return differenceInHours(endDateTime, startDateTime);
+    }
+  }
+
+  const offsetStartTimeRange = differenceInTime(
     startDateTime,
-    startOfDay(startDateTime)
+    startOfTime(startDateTime, timeStep),
+    timeStep
   );
 
-  const numberOfHoursInDay = differenceInHours(endDateTime, startDateTime);
-  const hourWidth = Math.floor(dayWidth / numberOfHoursInDay);
-  const newDayWidth = hourWidth * numberOfHoursInDay;
+  const numberOfTicksPerRange = differenceInTime(endDateTime, startDateTime, timeStep)
+  const numberOfSubTicksPerRange = subTicks;
+  const subTimeWidth = Math.floor(timeWidth / numberOfTicksPerRange);
+  const newTimeWidth = subTimeWidth * numberOfTicksPerRange;
 
   return {
-    hourWidth: abs(hourWidth),
-    dayWidth: abs(newDayWidth),
-    numberOfHoursInDay: abs(numberOfHoursInDay),
-    offsetStartHoursRange: abs(offsetStartHoursRange),
+    subTimeWidth: abs(subTimeWidth),
+    timeWidth: abs(newTimeWidth),
+    numberOfTicksPerRange: abs(numberOfTicksPerRange),
+    numberOfSubTicksPerRange: abs(numberOfTicksSubPerRange),
+    offsetStartTimeRange: abs(offsetStartTimeRange),
   };
 };

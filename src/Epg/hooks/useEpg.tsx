@@ -9,10 +9,10 @@ import { DateTime, BaseTimeFormat, Position } from "../helpers/types";
 
 // Import helpers
 import {
-  DAY_WIDTH,
+  TIME_WIDTH,
   ITEM_HEIGHT,
   ITEM_OVERSCAN,
-  getDayWidthResources,
+  getTimeWidthResources,
   getTimeRangeDates,
 } from "../helpers";
 
@@ -46,7 +46,9 @@ interface useEpgProps {
   isLine?: boolean;
   theme?: Theme;
   globalStyles?: string;
-  dayWidth?: number;
+  timeWidth?: number;
+  timeStep?: string;
+  subTicks?: number;
   sidebarWidth?: number;
   itemHeight?: number;
   itemOverscan?: number;
@@ -66,7 +68,9 @@ export function useEpg({
   isLine = true,
   theme: customTheme,
   globalStyles,
-  dayWidth: customDayWidth = DAY_WIDTH,
+  timeWidth: customTimeWidth = TIME_WIDTH,
+  timeStep: customTimeStep = "hour",
+  subTicks: customSubTicks = 4,
   sidebarWidth = SIDEBAR_WIDTH,
   itemHeight = ITEM_HEIGHT,
   itemOverscan = ITEM_OVERSCAN,
@@ -80,10 +84,10 @@ export function useEpg({
   );
 
   // Get day and hour width of the day
-  const { hourWidth, dayWidth, ...dayWidthResourcesProps } = React.useMemo(
+  const { subTimeWidth, timeWidth, ...timeWidthResourcesProps } = React.useMemo(
     () =>
-      getDayWidthResources({ dayWidth: customDayWidth, startDate, endDate }),
-    [customDayWidth, startDate, endDate]
+      getTimeWidthResources({ timeWidth: customTimeWidth, startDate, endDate }),
+    [customTimeWidth, startDate, endDate]
   );
 
   // -------- Effects --------
@@ -93,7 +97,7 @@ export function useEpg({
     sidebarWidth,
     width,
     height,
-    hourWidth,
+    subTimeWidth,
   });
 
   const { scrollX, scrollY, layoutWidth, layoutHeight } = layoutProps;
@@ -121,9 +125,9 @@ export function useEpg({
         startDate: startDateTime,
         endDate: endDateTime,
         itemHeight,
-        hourWidth,
+        subTimeWidth,
       }),
-    [epg, channels, startDateTime, endDateTime, itemHeight, hourWidth]
+    [epg, channels, startDateTime, endDateTime, itemHeight, subTimeWidth]
   );
 
   const theme: Theme = customTheme || defaultTheme;
@@ -175,11 +179,11 @@ export function useEpg({
     isLine,
     isProgramVisible,
     isChannelVisible,
-    dayWidth,
-    hourWidth,
+    timeWidth,
+    subTimeWidth,
     sidebarWidth,
     itemHeight,
-    ...dayWidthResourcesProps,
+    ...timeWidthResourcesProps,
     ref: scrollBoxRef,
   });
 

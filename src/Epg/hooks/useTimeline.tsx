@@ -7,11 +7,12 @@ import { BaseTimeFormat } from "../helpers/types";
 import { TIME_FORMAT, generateArray } from "../helpers";
 
 export function useTimeline(
-  numberOfHoursInDay: number,
+  numberOfTicksPerRange: number,
+  numberOfTicksPerSubRange: number,
   isBaseTimeFormat: BaseTimeFormat
 ) {
-  const time = generateArray(numberOfHoursInDay);
-  const dividers = generateArray(4);
+  const time = generateArray(numberOfTicksPerRange);
+  const dividers = generateArray(numberOfTicksPerSubRange);
 
   const formatTime = (index: number) => {
     const date = new Date();
