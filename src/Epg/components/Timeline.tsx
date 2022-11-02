@@ -45,7 +45,7 @@ export function Timeline({
     numberOfTicksPerSubRange,
     isBaseTimeFormat
   );
-
+  
   const renderTime = (index: number) => (
     <TimelineBox data-testid="timeline-item" key={index} width={subTimeWidth}>
       <TimelineTime isBaseTimeFormat={isBaseTimeFormat} isRTL={isRTL}>
