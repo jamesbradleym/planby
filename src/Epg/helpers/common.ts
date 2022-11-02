@@ -62,17 +62,17 @@ export const getTimeWidthResources = ({
   function startOfTime(dateTime, timeStep) {
     switch (timeStep) {
       case "hour":
-        return startOfDay(endDateTime, startDateTime);
+        return startOfDay(dateTime);
       case "day":
-        return startOfWeek(endDateTime, startDateTime);
+        return startOfWeek(dateTime);
       case "week":
-        return startOfMonth(endDateTime, startDateTime);
+        return startOfMonth(dateTime);
       case "month":
-        return startOfQuarter(endDateTime, startDateTime);
+        return startOfQuarter(dateTime);
       case "quarter":
-        return startOfYear(endDateTime, startDateTime);
+        return startOfYear(dateTime);
       default:
-        return differenceInHours(endDateTime, startDateTime);
+        return startOfDay(dateTime));
     }
   }
 
