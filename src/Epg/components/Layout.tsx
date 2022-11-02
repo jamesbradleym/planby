@@ -67,7 +67,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   (props, scrollBoxRef) => {
     const { channels, programs, startDate, endDate, scrollY } = props;
     const { timeWidth, subTimeWidth, sidebarWidth, itemHeight } = props;
-    const { numberOfTicksPerRange, offsetStartTimeRange } = props;
+    const { numberOfTicksPerRange, numberOfTicksPerSubRange, offsetStartTimeRange } = props;
     const {
       isSidebar = true,
       isTimeline = true,
@@ -123,10 +123,12 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         isRTL,
         timeWidth,
         numberOfTicksPerRange,
+        numberOfTicksPerSubRange
       };
       const timeProps = {
         offsetStartTimeRange,
         numberOfTicksPerRange,
+        numberOfTicksPerSubRange,
         isBaseTimeFormat,
         subTimeWidth,
       };
