@@ -144,7 +144,7 @@ interface ConvertedPrograms {
   endDate: DateTime;
   itemHeight: number;
   subTimeWidth: number;
-  timeStep: number;
+  timeStep: string;
 }
 export const getConvertedPrograms = ({
   data,
