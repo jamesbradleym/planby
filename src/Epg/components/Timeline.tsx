@@ -35,11 +35,13 @@ export function Timeline({
   timeWidth,
   subTimeWidth,
   numberOfTicksPerRange,
+  numberOfTicksPerSubRange,
   offsetStartTimeRange,
   sidebarWidth,
 }: TimelineProps) {
   const { time, dividers, formatTime } = useTimeline(
     numberOfTicksPerRange,
+    numberOfTicksPerSubRange,
     isBaseTimeFormat
   );
 
