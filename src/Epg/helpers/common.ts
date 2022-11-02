@@ -59,7 +59,7 @@ export const getTimeWidthResources = ({
     );
   }
 
-  function startOfTime(dateTime:DateTime, timeStep) {
+  function startOfTime(dateTime:DateTime, timeStep:string) {
     switch (timeStep) {
       case "hour":
         return startOfDay(dateTime);
@@ -76,7 +76,7 @@ export const getTimeWidthResources = ({
     }
   }
 
-  function differenceInTime(endDateTime, startDateTime, timeStep) {
+  function differenceInTime(endDateTime:DateTime, startDateTime:DateTime, timeStep:string) {
     switch (timeStep) {
       case "hour":
         return differenceInHours(endDateTime, startDateTime);
