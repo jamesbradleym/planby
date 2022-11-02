@@ -144,6 +144,7 @@ interface ConvertedPrograms {
   endDate: DateTime;
   itemHeight: number;
   subTimeWidth: number;
+  timeStep: number;
 }
 export const getConvertedPrograms = ({
   data,
@@ -152,6 +153,7 @@ export const getConvertedPrograms = ({
   endDate,
   itemHeight,
   subTimeWidth,
+  timeStep,
 }: ConvertedPrograms) =>
   data.map((next) => {
     const channelIndex = channels.findIndex(
