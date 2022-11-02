@@ -26,6 +26,7 @@ interface RenderTimeline {
   sidebarWidth: number;
   subTimeWidth: number;
   numberOfTicksPerRange: number;
+  numberOfTicksPerSubRange: number;
   offsetStartTimeRange: number;
   timeWidth: number;
 }
@@ -39,6 +40,7 @@ interface LayoutProps {
   timeWidth: number;
   subTimeWidth: number;
   numberOfTicksPerRange: number;
+  numberOfTicksPerSubRange: number;
   offsetStartTimeRange: number;
   sidebarWidth: number;
   itemHeight: number;
