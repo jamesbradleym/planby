@@ -29,6 +29,7 @@ interface RenderTimeline {
   numberOfTicksPerSubRange: number;
   offsetStartTimeRange: number;
   timeWidth: number;
+  timeStep: string;
 }
 
 interface LayoutProps {
@@ -39,6 +40,7 @@ interface LayoutProps {
   scrollY: number;
   timeWidth: number;
   subTimeWidth: number;
+  timeStep: string;
   numberOfTicksPerRange: number;
   numberOfTicksPerSubRange: number;
   offsetStartTimeRange: number;
@@ -69,7 +71,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   (props, scrollBoxRef) => {
     const { channels, programs, startDate, endDate, scrollY } = props;
     const { timeWidth, subTimeWidth, sidebarWidth, itemHeight } = props;
-    const { numberOfTicksPerRange, numberOfTicksPerSubRange, offsetStartTimeRange } = props;
+    const { numberOfTicksPerRange, numberOfTicksPerSubRange, offsetStartTimeRange, timeStep } = props;
     const {
       isSidebar = true,
       isTimeline = true,
@@ -150,6 +152,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
             startDate={startDate}
             endDate={endDate}
             height={contentHeight}
+            timeStep={timeStep}
           />
         )}
         {isTimeline && renderTopbar()}
