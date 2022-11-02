@@ -41,7 +41,7 @@ interface TimeWidth {
   startDate: DateTime;
   endDate: DateTime;
   timeStep: string;
-  subTicks: string;
+  subTicks: number;
 }
 export const getTimeWidthResources = ({
   timeWidth,
