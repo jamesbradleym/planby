@@ -100,7 +100,7 @@ export const getTimeWidthResources = ({
   );
 
   const numberOfTicksPerRange = differenceInTime(endDateTime, startDateTime, timeStep)
-  const numberOfSubTicksPerRange = subTicks;
+  const numberOfTicksPerSubRange = subTicks;
   const subTimeWidth = Math.floor(timeWidth / numberOfTicksPerRange);
   const newTimeWidth = subTimeWidth * numberOfTicksPerRange;
 
@@ -108,7 +108,7 @@ export const getTimeWidthResources = ({
     subTimeWidth: abs(subTimeWidth),
     timeWidth: abs(newTimeWidth),
     numberOfTicksPerRange: abs(numberOfTicksPerRange),
-    numberOfSubTicksPerRange: abs(numberOfTicksSubPerRange),
+    numberOfTicksPerSubRange: abs(numberOfTicksPerSubRange),
     offsetStartTimeRange: abs(offsetStartTimeRange),
   };
 };
