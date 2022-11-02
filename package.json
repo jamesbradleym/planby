@@ -1,5 +1,5 @@
 {
-  "name": "planby-jb",
+  "name": "planby",
   "author": "Karol Kozer",
   "version": "1.1.1",
   "license": "MIT",
@@ -44,15 +44,15 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "module": "dist/planby-jb.esm.js",
+  "module": "dist/planby.esm.js",
   "bundlewatch": {
     "files": [
       {
-        "path": "dist/planby-jb.cjs.production.min.js",
+        "path": "dist/planby.cjs.production.min.js",
         "maxSize": "30kB"
       },
       {
-        "path": "dist/planby-jb.esm.js",
+        "path": "dist/planby.esm.js",
         "maxSize": "30kB"
       }
     ]
