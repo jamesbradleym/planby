@@ -72,7 +72,7 @@ export const getTimeWidthResources = ({
       case "quarter":
         return startOfYear(dateTime);
       default:
-        return startOfDay(dateTime));
+        return startOfDay(dateTime);
     }
   }
 
