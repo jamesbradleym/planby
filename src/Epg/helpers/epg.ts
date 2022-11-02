@@ -7,7 +7,10 @@ import { Channel, Program } from "./interfaces";
 import { ProgramWithPosition, Position, DateTime } from "./types";
 
 // Import variables
-import { HOUR_IN_MINUTES } from "./variables";
+import { MINUTES_IN_HOUR } from "./variables";
+
+// Import functions
+import { differenceInTime } from "./functions";
 
 // Import time heleprs
 import {
@@ -19,48 +22,53 @@ import { getDate } from "./common";
 
 // -------- Program width --------
 const getItemDiffWidth = (diff: number, subTimeWidth: number) =>
-  (diff * subTimeWidth) / HOUR_IN_MINUTES;
+  (diff * subTimeWidth) / MINUTES_IN_HOUR;
 
 export const getPositionX = (
   since: DateTime,
   till: DateTime,
   startDate: DateTime,
   endDate: DateTime,
-  subTimeWidth: number
+  subTimeWidth: number,
+  timeStep: string
 ) => {
   const isTomorrow = getTime(getDate(till)) > getTime(getDate(endDate));
   const isYesterday = getTime(getDate(since)) < getTime(getDate(startDate));
 
   // When time range is set to 1 hour and program time is greater than 1 hour
   if (isYesterday && isTomorrow) {
-    const diffTime = differenceInMinutes(
+    const diffTime = differenceInTime(
       roundToMinutes(getDate(endDate)),
-      getDate(startDate)
+      getDate(startDate),
+      timeStep
     );
     return getItemDiffWidth(diffTime, subTimeWidth);
   }
 
   if (isYesterday) {
-    const diffTime = differenceInMinutes(
+    const diffTime = differenceInTime(
       roundToMinutes(getDate(till)),
-      getDate(startDate)
+      getDate(startDate),
+      timeStep
     );
     return getItemDiffWidth(diffTime, subTimeWidth);
   }
 
   if (isTomorrow) {
-    const diffTime = differenceInMinutes(
+    const diffTime = differenceInTime(
       getDate(endDate),
-      roundToMinutes(getDate(since))
+      roundToMinutes(getDate(since)),
+      timeStep
     );
 
     if (diffTime < 0) return 0;
     return getItemDiffWidth(diffTime, subTimeWidth);
   }
 
-  const diffTime = differenceInMinutes(
+  const diffTime = differenceInTime(
     roundToMinutes(getDate(till)),
-    roundToMinutes(getDate(since))
+    roundToMinutes(getDate(since)),
+    timeStep
   );
 
   return getItemDiffWidth(diffTime, subTimeWidth);
@@ -85,7 +93,8 @@ export const getProgramPosition = (
   itemHeight: number,
   subTimeWidth: number,
   startDate: DateTime,
-  endDate: DateTime
+  endDate: DateTime,
+  timeStep: string
 ) => {
   const item = {
     ...program,
@@ -99,7 +108,8 @@ export const getProgramPosition = (
     item.till,
     startDate,
     endDate,
-    subTimeWidth
+    subTimeWidth,
+    timeStep
   );
   const top = itemHeight * channelIndex;
   let left = getPositionX(startDate, item.since, startDate, endDate, subTimeWidth);
@@ -108,7 +118,8 @@ export const getProgramPosition = (
     item.till,
     startDate,
     endDate,
-    subTimeWidth
+    subTimeWidth,
+    timeStep
   );
 
   if (isYesterday) left = 0;
@@ -152,7 +163,8 @@ export const getConvertedPrograms = ({
       itemHeight,
       subTimeWidth,
       startDate,
-      endDate
+      endDate,
+      timeStep
     );
   }, [] as ProgramWithPosition[]);
 

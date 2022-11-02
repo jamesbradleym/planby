@@ -3,7 +3,7 @@ export const TIME_WIDTH = 7200;
 export const TIME_UNIT_WIDTH = 300;
 export const HOURS_IN_DAY = 24;
 
-export const HOUR_IN_MINUTES = 60;
+export const MINUTES_IN_HOUR = 60;
 
 export const TIMELINE_HEIGHT = 60;
 

@@ -126,8 +126,9 @@ export function useEpg({
         endDate: endDateTime,
         itemHeight,
         subTimeWidth,
+        timeStep: customTimeStep
       }),
-    [epg, channels, startDateTime, endDateTime, itemHeight, subTimeWidth]
+    [epg, channels, startDateTime, endDateTime, itemHeight, subTimeWidth, customTimeStep]
   );
 
   const theme: Theme = customTheme || defaultTheme;

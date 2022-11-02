@@ -1,6 +1,6 @@
 import { useLayoutEffect, useEffect } from "react";
-import { differenceInHours, differenceInDays, differenceInWeeks, differenceInMonths, differenceInQuarters, startOfDay, startOfWeek, startOfMonth, startOfQuarter, startOfYear } from "date-fns";
 import { HOURS_IN_DAY } from "./variables";
+import { differenceInTime, startOfTime } from "./functions"
 
 type DateTime = string | number | Date;
 
@@ -20,6 +20,7 @@ export const generateArray = (num: number) => new Array(num).fill("");
 type ProgramOptions = {
   position: { width: number; height: number; top: number; left: number };
 };
+
 export const getProgramOptions = <T extends ProgramOptions>(program: T) => {
   const { width, height, top, left } = program.position;
   return {
@@ -57,40 +58,6 @@ export const getTimeWidthResources = ({
     console.error(
       `Invalid endDate property. Value of endDate must be greater than startDate. Props: startDateTime: ${startDateTime}, endDateTime: ${endDateTime}`
     );
-  }
-
-  function startOfTime(dateTime:Date, timeStep:string) {
-    switch (timeStep) {
-      case "hour":
-        return startOfDay(dateTime);
-      case "day":
-        return startOfWeek(dateTime);
-      case "week":
-        return startOfMonth(dateTime);
-      case "month":
-        return startOfQuarter(dateTime);
-      case "quarter":
-        return startOfYear(dateTime);
-      default:
-        return startOfDay(dateTime);
-    }
-  }
-
-  function differenceInTime(endDateTime:Date, startDateTime:Date, timeStep:string) {
-    switch (timeStep) {
-      case "hour":
-        return differenceInHours(endDateTime, startDateTime);
-      case "day":
-        return differenceInDays(endDateTime, startDateTime);
-      case "week":
-        return differenceInWeeks(endDateTime, startDateTime);
-      case "month":
-        return differenceInMonths(endDateTime, startDateTime);
-      case "quarter":
-        return differenceInQuarters(endDateTime, startDateTime);
-      default:
-        return differenceInHours(endDateTime, startDateTime);
-    }
   }
 
   const offsetStartTimeRange = differenceInTime(
