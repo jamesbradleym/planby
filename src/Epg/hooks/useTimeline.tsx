@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
 // Import types
-import { BaseTimeFormat } from "../helpers/types";
+import { BaseTimeFormat, DateTime } from "../helpers/types";
 
 // Import helpers
 import { TIME_FORMAT, generateArray } from "../helpers";
