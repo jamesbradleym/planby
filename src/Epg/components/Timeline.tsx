@@ -27,6 +27,7 @@ interface TimelineProps {
   numberOfTicksPerSubRange: number;
   offsetStartTimeRange: number;
   sidebarWidth: number;
+  timeStep: string;
 }
 
 export function Timeline({
