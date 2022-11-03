@@ -1,7 +1,7 @@
 import * as React from "react";
 
 // Import types
-import { BaseTimeFormat } from "../helpers/types";
+import { BaseTimeFormat, DateTime } from "../helpers/types";
 
 // Import styles
 import { TimelineStyled } from "../styles";
