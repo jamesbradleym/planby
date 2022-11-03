@@ -10,6 +10,8 @@ import { DateTime, BaseTimeFormat, Position } from "../helpers/types";
 // Import helpers
 import {
   TIME_WIDTH,
+  TIME_STEP,
+  TIME_TICKS,
   ITEM_HEIGHT,
   ITEM_OVERSCAN,
   getTimeWidthResources,
@@ -69,8 +71,8 @@ export function useEpg({
   theme: customTheme,
   globalStyles,
   timeWidth: customTimeWidth = TIME_WIDTH,
-  timeStep: customTimeStep = "hour",
-  subTicks: customSubTicks = 4,
+  timeStep: customTimeStep = TIME_STEP,
+  subTicks: customSubTicks = TIME_TICKS,
   sidebarWidth = SIDEBAR_WIDTH,
   itemHeight = ITEM_HEIGHT,
   itemOverscan = ITEM_OVERSCAN,
@@ -98,7 +100,7 @@ export function useEpg({
     width,
     height,
     subTimeWidth,
-    timeStep: customTimeStep,
+    timeStep,
   });
 
   const { scrollX, scrollY, layoutWidth, layoutHeight } = layoutProps;

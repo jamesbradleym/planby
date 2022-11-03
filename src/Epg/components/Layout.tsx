@@ -129,6 +129,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         numberOfTicksPerRange,
         numberOfTicksPerSubRange
       };
+      console.log("Time step: ", timeStep);
       const timeProps = {
         offsetStartTimeRange,
         numberOfTicksPerRange,

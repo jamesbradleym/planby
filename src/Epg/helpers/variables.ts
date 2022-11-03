@@ -1,6 +1,9 @@
 // Dimensions
 export const TIME_WIDTH = 7200;
+export const TIME_STEP = "hour";
 export const TIME_UNIT_WIDTH = 300;
+
+export const TIME_TICKS = 4;
 
 export const MINUTES_IN_HOUR = 60;
 export const HOURS_IN_DAY = 24;
