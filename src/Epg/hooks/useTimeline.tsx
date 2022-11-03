@@ -23,19 +23,13 @@ export function useTimeline(
 
         if (isBaseTimeFormat) {
           const date = new Date(`${startDate}T${time}:00:00`);
-          console.log(date);
-          console.log(format(date, TIME_FORMAT.DEFAULT));
           const timeFormat = format(date, TIME_FORMAT.BASE_HOURS_TIME);
-          console.log(time);
           return timeFormat.toLowerCase().replace(/\s/g, "");
         }
 
         return `${time}:00`;
       }
       case "day": {
-        console.log(startDate);
-        console.log(new Date(startDate));
-        console.log(format(new Date(startDate), TIME_FORMAT.DEFAULT));
         const result = add(new Date(startDate), {
           years: 0,
           months: 0,
