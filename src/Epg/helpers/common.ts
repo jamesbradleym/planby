@@ -48,7 +48,6 @@ export const getSubTimeWidth = (timeWidth: number, timeStep: string) => {
       return timeWidth / MINUTES_IN_HOUR;
   }
 }
-}
 
 export const getDate = (date: DateTime) => new Date(date);
 
