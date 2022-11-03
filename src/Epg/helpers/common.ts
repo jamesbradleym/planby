@@ -1,5 +1,5 @@
 import { useLayoutEffect, useEffect } from "react";
-import { HOURS_IN_DAY } from "./variables";
+import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER } from "./variables";
 import { differenceInTime, startOfTime } from "./functions"
 
 type DateTime = string | number | Date;
