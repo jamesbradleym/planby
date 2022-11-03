@@ -72,6 +72,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
     const { channels, programs, startDate, endDate, scrollY } = props;
     const { timeWidth, subTimeWidth, sidebarWidth, itemHeight } = props;
     const { numberOfTicksPerRange, numberOfTicksPerSubRange, offsetStartTimeRange, timeStep } = props;
+    console.log("Time step: ", timeStep);
     const {
       isSidebar = true,
       isTimeline = true,
@@ -129,7 +130,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         numberOfTicksPerRange,
         numberOfTicksPerSubRange
       };
-      console.log("Time step: ", timeStep);
+
       const timeProps = {
         offsetStartTimeRange,
         numberOfTicksPerRange,
