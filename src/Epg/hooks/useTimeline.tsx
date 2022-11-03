@@ -9,13 +9,12 @@ import { TIME_FORMAT, generateArray } from "../helpers";
 export function useTimeline(
   numberOfTicksPerRange: number,
   numberOfTicksPerSubRange: number,
-  timeStep: string,
   isBaseTimeFormat: BaseTimeFormat
 ) {
   const time = generateArray(numberOfTicksPerRange);
   const dividers = generateArray(numberOfTicksPerSubRange);
 
-  const formatTime = (startDate: DateTime, index: number) => {
+  const formatTime = (startDate: DateTime, index: number, timeStep: string) => {
 
     switch (timeStep) {
       case "hour": {
