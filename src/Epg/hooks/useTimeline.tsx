@@ -9,24 +9,92 @@ import { TIME_FORMAT, generateArray } from "../helpers";
 export function useTimeline(
   numberOfTicksPerRange: number,
   numberOfTicksPerSubRange: number,
+  timeStep: string,
   isBaseTimeFormat: BaseTimeFormat
 ) {
   const time = generateArray(numberOfTicksPerRange);
   const dividers = generateArray(numberOfTicksPerSubRange);
 
-  const formatTime = (index: number) => {
-    const date = new Date();
-    const baseDate = format(date, TIME_FORMAT.DATE);
-    const time = index < 10 ? `0${index}` : index;
+  const formatTime = (startDate: DateTime, index: number) => {
 
-    if (isBaseTimeFormat) {
-      const date = new Date(`${baseDate}T${time}:00:00`);
-      const timeFormat = format(date, TIME_FORMAT.BASE_HOURS_TIME);
-      return timeFormat.toLowerCase().replace(/\s/g, "");
+    switch (timeStep) {
+      case "hour":
+        const baseDate = format(startDate, TIME_FORMAT.DATE);
+        const time = index < 10 ? `0${index}` : index;
+
+        if (isBaseTimeFormat) {
+          const date = new Date(`${startDate}T${time}:00:00`);
+          const timeFormat = format(date, TIME_FORMAT.BASE_HOURS_TIME);
+          return timeFormat.toLowerCase().replace(/\s/g, "");
+        }
+
+        return `${time}:00`;
+      case "day":
+        const baseDate = format(startDate, TIME_FORMAT.DATE);
+        const result = add(baseDate, {
+          years: 0,
+          months: 0,
+          weeks: 0,
+          days: index,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        })
+        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
+        return timeFormat.toLowerCase().replace(/\s/g, "");
+      case "week":
+        const baseDate = format(startDate, TIME_FORMAT.DATE);
+        const result = add(baseDate, {
+          years: 0,
+          months: 0,
+          weeks: index,
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        })
+        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
+        return timeFormat.toLowerCase().replace(/\s/g, "");
+      case "month":
+        const baseDate = format(startDate, TIME_FORMAT.DATE);
+        const result = add(baseDate, {
+          years: 0,
+          months: index,
+          weeks: 0,
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        })
+        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
+        return timeFormat.toLowerCase().replace(/\s/g, "");
+      case "quarter":
+        const baseDate = format(startDate, TIME_FORMAT.DATE);
+        const result = add(baseDate, {
+          years: 0,
+          months: index*3,
+          weeks: 0,
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        })
+        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
+        return timeFormat.toLowerCase().replace(/\s/g, "");
+      default:
+        const date = new Date();
+        const baseDate = format(date, TIME_FORMAT.DATE);
+        const time = index < 10 ? `0${index}` : index;
+
+        if (isBaseTimeFormat) {
+          const date = new Date(`${baseDate}T${time}:00:00`);
+          const timeFormat = format(date, TIME_FORMAT.BASE_HOURS_TIME);
+          return timeFormat.toLowerCase().replace(/\s/g, "");
+        }
+
+        return `${time}:00`;
+      }
     }
-
-    return `${time}:00`;
-  };
 
   return { time, dividers, formatTime };
 }
