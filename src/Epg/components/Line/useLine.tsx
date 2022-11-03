@@ -44,7 +44,22 @@ export function useLine({
   ]);
 
   useInterval(() => {
-    const offset = subTimeWidth / MINUTES_IN_HOUR;
+    const offset = () => {
+      switch (timeStep) {
+        case "hour":
+          return subTimeWidth / MINUTES_IN_HOUR;
+        case "day":
+          return subTimeWidth /  HOURS_IN_DAY;
+        case "week":
+          return subTimeWidth /  DAYS_IN_WEEK;
+        case "month":
+          return subTimeWidth / AVG_WEEKS_IN_MONTH;
+        case "quarter":
+          return subTimeWidth /  MONTHS_IN_QUARTER;
+        default:
+          return subTimeWidth /  MINUTES_IN_HOUR;
+      }
+    }
     const positionOffset = offset * 2;
     setPositionX((prev) => prev + positionOffset);
   }, isScrollX);
