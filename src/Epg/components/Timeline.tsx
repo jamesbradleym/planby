@@ -28,6 +28,7 @@ interface TimelineProps {
   offsetStartTimeRange: number;
   sidebarWidth: number;
   timeStep: string;
+  startDate: DateTime;
 }
 
 export function Timeline({
