@@ -19,7 +19,6 @@ export function useTimeline(
 
     switch (timeStep) {
       case "hour": {
-        const baseDate = format(startDate, TIME_FORMAT.DATE);
         const time = index < 10 ? `0${index}` : index;
 
         if (isBaseTimeFormat) {
