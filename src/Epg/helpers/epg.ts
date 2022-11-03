@@ -22,6 +22,7 @@ import { getDate } from "./common";
 
 // -------- Program width --------
 const getItemDiffWidth = (diff: number, subTimeWidth: number, timeStep: string) => {
+  console.log(diff, subTimeWidth, timeStep);
   switch (timeStep) {
     case "hour":
       return (diff * subTimeWidth) / MINUTES_IN_HOUR;
