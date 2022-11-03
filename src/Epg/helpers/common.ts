@@ -32,7 +32,23 @@ export const getProgramOptions = <T extends ProgramOptions>(program: T) => {
 export const useIsomorphicLayoutEffect = () =>
   typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
-export const getSubTimeWidth = (timeWidth: number) => timeWidth / HOURS_IN_DAY;
+export const getSubTimeWidth = (timeWidth: number, timeStep: string) => {
+  switch (timeStep) {
+    case "hour":
+      return timeWidth / MINUTES_IN_HOUR;
+    case "day":
+      return timeWidth / HOURS_IN_DAY;
+    case "week":
+      return timeWidth / DAYS_IN_WEEK;
+    case "month":
+      return timeWidth / AVG_WEEKS_IN_MONTH;
+    case "quarter":
+      return timeWidth / MONTHS_IN_QUARTER;
+    default:
+      return timeWidth / MINUTES_IN_HOUR;
+  }
+}
+}
 
 export const getDate = (date: DateTime) => new Date(date);
 
