@@ -15,7 +15,7 @@ export function useTimeline(
   const dividers = generateArray(numberOfTicksPerSubRange);
 
   const formatTime = (startDate: DateTime, index: number, timeStep: string) => {
-
+    console.log(timeStep);
     switch (timeStep) {
       case "hour": {
         const time = index < 10 ? `0${index}` : index;
