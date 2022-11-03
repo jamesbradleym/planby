@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, add } from "date-fns";
 
 // Import types
 import { BaseTimeFormat, DateTime } from "../helpers/types";
