@@ -39,13 +39,15 @@ export function Timeline({
   numberOfTicksPerSubRange,
   offsetStartTimeRange,
   sidebarWidth,
+  timeStep
 }: TimelineProps) {
   const { time, dividers, formatTime } = useTimeline(
     numberOfTicksPerRange,
     numberOfTicksPerSubRange,
+    timeStep,
     isBaseTimeFormat
   );
-  
+
   const renderTime = (index: number) => (
     <TimelineBox data-testid="timeline-item" key={index} width={subTimeWidth}>
       <TimelineTime isBaseTimeFormat={isBaseTimeFormat} isRTL={isRTL}>
