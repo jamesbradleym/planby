@@ -19,7 +19,7 @@ export function useTimeline(
   const formatTime = (startDate: DateTime, index: number) => {
 
     switch (timeStep) {
-      case "hour":
+      case "hour": {
         const baseDate = format(startDate, TIME_FORMAT.DATE);
         const time = index < 10 ? `0${index}` : index;
 
@@ -30,7 +30,8 @@ export function useTimeline(
         }
 
         return `${time}:00`;
-      case "day":
+      }
+      case "day": {
         const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: 0,
@@ -42,7 +43,8 @@ export function useTimeline(
         })
         const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
         return timeFormat.toLowerCase().replace(/\s/g, "");
-      case "week":
+      }
+      case "week": {
         const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: 0,
@@ -54,7 +56,8 @@ export function useTimeline(
         })
         const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
         return timeFormat.toLowerCase().replace(/\s/g, "");
-      case "month":
+      }
+      case "month": {
         const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: index,
@@ -66,7 +69,8 @@ export function useTimeline(
         })
         const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
         return timeFormat.toLowerCase().replace(/\s/g, "");
-      case "quarter":
+      }
+      case "quarter": {
         const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: index*3,
@@ -78,7 +82,8 @@ export function useTimeline(
         })
         const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
         return timeFormat.toLowerCase().replace(/\s/g, "");
-      default:
+      }
+      default: {
         const date = new Date();
         const baseDate = format(date, TIME_FORMAT.DATE);
         const time = index < 10 ? `0${index}` : index;
@@ -92,6 +97,7 @@ export function useTimeline(
         return `${time}:00`;
       }
     }
+  }
 
   return { time, dividers, formatTime };
 }
