@@ -7,7 +7,7 @@ import { Channel, Program } from "./interfaces";
 import { ProgramWithPosition, Position, DateTime } from "./types";
 
 // Import variables
-import { MINUTES_IN_HOUR } from "./variables";
+import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER } from "./variables";
 
 // Import functions
 import { differenceInTime } from "./functions";
@@ -21,8 +21,22 @@ import {
 import { getDate } from "./common";
 
 // -------- Program width --------
-const getItemDiffWidth = (diff: number, subTimeWidth: number) =>
-  (diff * subTimeWidth) / MINUTES_IN_HOUR;
+const getItemDiffWidth = (diff: number, subTimeWidth: number, timeStep: string) =>{
+  switch (timeStep) {
+    case "hour":
+      return (diff * subTimeWidth) / MINUTES_IN_HOUR;
+    case "day":
+      return (diff * subTimeWidth) / HOURS_IN_DAY;
+    case "week":
+      return (diff * subTimeWidth) / DAYS_IN_WEEK;
+    case "month":
+      return (diff * subTimeWidth) / AVG_WEEKS_IN_MONTH;
+    case "quarter":
+      return (diff * subTimeWidth) / MONTHS_IN_QUARTER;
+    default:
+      return (diff * subTimeWidth) / MINUTES_IN_HOUR;
+  }
+}
 
 export const getPositionX = (
   since: DateTime,
@@ -42,7 +56,7 @@ export const getPositionX = (
       getDate(startDate),
       timeStep
     );
-    return getItemDiffWidth(diffTime, subTimeWidth);
+    return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
   }
 
   if (isYesterday) {
@@ -51,7 +65,7 @@ export const getPositionX = (
       getDate(startDate),
       timeStep
     );
-    return getItemDiffWidth(diffTime, subTimeWidth);
+    return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
   }
 
   if (isTomorrow) {
@@ -62,7 +76,7 @@ export const getPositionX = (
     );
 
     if (diffTime < 0) return 0;
-    return getItemDiffWidth(diffTime, subTimeWidth);
+    return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
   }
 
   const diffTime = differenceInTime(
@@ -71,7 +85,7 @@ export const getPositionX = (
     timeStep
   );
 
-  return getItemDiffWidth(diffTime, subTimeWidth);
+  return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
 };
 
 // -------- Channel position in the Epg --------
