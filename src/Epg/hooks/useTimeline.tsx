@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
 // Import types
-import { BaseTimeFormat, DateTime } from "../helpers/types";
+import { BaseTimeFormat } from "../helpers/types";
 
 // Import helpers
 import { TIME_FORMAT, generateArray } from "../helpers";
@@ -10,7 +10,6 @@ export function useTimeline(
   numberOfTicksPerRange: number,
   numberOfTicksPerSubRange: number,
   timeStep: string,
-  startDate: DateTime,
   isBaseTimeFormat: BaseTimeFormat
 ) {
   const time = generateArray(numberOfTicksPerRange);

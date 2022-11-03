@@ -48,7 +48,6 @@ export function Timeline({
     numberOfTicksPerRange,
     numberOfTicksPerSubRange,
     timeStep,
-    startDate,
     isBaseTimeFormat
   );
 
