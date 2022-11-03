@@ -185,7 +185,7 @@ export function useEpg({
     isChannelVisible,
     timeWidth,
     subTimeWidth,
-    timeStep,
+    timeStep: customTimeStep,
     sidebarWidth,
     itemHeight,
     ...timeWidthResourcesProps,
