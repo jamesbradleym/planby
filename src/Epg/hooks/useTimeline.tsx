@@ -30,8 +30,7 @@ export function useTimeline(
 
         return `${time}:00`;
       case "day":
-        const baseDate = format(startDate, TIME_FORMAT.DATE);
-        const result = add(baseDate, {
+        const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: 0,
           weeks: 0,
@@ -43,8 +42,7 @@ export function useTimeline(
         const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
         return timeFormat.toLowerCase().replace(/\s/g, "");
       case "week":
-        const baseDate = format(startDate, TIME_FORMAT.DATE);
-        const result = add(baseDate, {
+        const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: 0,
           weeks: index,
@@ -56,8 +54,7 @@ export function useTimeline(
         const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
         return timeFormat.toLowerCase().replace(/\s/g, "");
       case "month":
-        const baseDate = format(startDate, TIME_FORMAT.DATE);
-        const result = add(baseDate, {
+        const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: index,
           weeks: 0,
@@ -69,8 +66,7 @@ export function useTimeline(
         const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
         return timeFormat.toLowerCase().replace(/\s/g, "");
       case "quarter":
-        const baseDate = format(startDate, TIME_FORMAT.DATE);
-        const result = add(baseDate, {
+        const result = add(format(startDate, TIME_FORMAT.DATE), {
           years: 0,
           months: index*3,
           weeks: 0,
