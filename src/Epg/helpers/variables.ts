@@ -1,9 +1,12 @@
 // Dimensions
 export const TIME_WIDTH = 7200;
 export const TIME_UNIT_WIDTH = 300;
-export const HOURS_IN_DAY = 24;
 
 export const MINUTES_IN_HOUR = 60;
+export const HOURS_IN_DAY = 24;
+export const DAYS_IN_WEEK = 7;
+export const AVG_WEEKS_IN_MONTH = 4;
+export const MONTHS_IN_QUARTER = 3;
 
 export const TIMELINE_HEIGHT = 60;
 

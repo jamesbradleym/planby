@@ -21,7 +21,7 @@ import {
 import { getDate } from "./common";
 
 // -------- Program width --------
-const getItemDiffWidth = (diff: number, subTimeWidth: number, timeStep: string) =>{
+const getItemDiffWidth = (diff: number, subTimeWidth: number, timeStep: string) => {
   switch (timeStep) {
     case "hour":
       return (diff * subTimeWidth) / MINUTES_IN_HOUR;
