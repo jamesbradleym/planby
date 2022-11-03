@@ -49,18 +49,18 @@ export function useLine({
         case "hour":
           return subTimeWidth / MINUTES_IN_HOUR;
         case "day":
-          return subTimeWidth /  HOURS_IN_DAY;
+          return subTimeWidth / HOURS_IN_DAY;
         case "week":
-          return subTimeWidth /  DAYS_IN_WEEK;
+          return subTimeWidth / DAYS_IN_WEEK;
         case "month":
           return subTimeWidth / AVG_WEEKS_IN_MONTH;
         case "quarter":
-          return subTimeWidth /  MONTHS_IN_QUARTER;
+          return subTimeWidth / MONTHS_IN_QUARTER;
         default:
-          return subTimeWidth /  MINUTES_IN_HOUR;
+          return subTimeWidth / MINUTES_IN_HOUR;
       }
     }
-    const positionOffset = offset * 2;
+    const positionOffset = offset() * 2;
     setPositionX((prev) => prev + positionOffset);
   }, isScrollX);
 
