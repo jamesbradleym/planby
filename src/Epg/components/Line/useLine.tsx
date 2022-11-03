@@ -5,7 +5,7 @@ import { startOfDay } from "date-fns";
 import { DateTime } from "../../helpers/types";
 
 // Import helpers
-import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER PROGRAM_REFRESH, getPositionX } from "../../helpers";
+import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER, PROGRAM_REFRESH, getPositionX } from "../../helpers";
 
 // Import hooks
 import { useInterval } from "../../hooks";
