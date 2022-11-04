@@ -140,8 +140,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         timeStep,
         startDate
       };
-      console.log(timeProps);
-      console.log(timeStep);
+      
       if (renderTimeline) {
         return renderTimeline({ ...timeProps, ...props });
       }
