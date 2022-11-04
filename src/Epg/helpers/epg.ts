@@ -27,7 +27,6 @@ const getItemDiffWidth = (diff: number, subTimeWidth: number, timeStep: string) 
     case "hour":
       return (diff * subTimeWidth) / MINUTES_IN_HOUR;
     case "day":
-      console.log((diff * subTimeWidth) / HOURS_IN_DAY);
       return (diff * subTimeWidth) / HOURS_IN_DAY;
     case "week":
       return (diff * subTimeWidth) / DAYS_IN_WEEK;
@@ -86,7 +85,7 @@ export const getPositionX = (
     roundToMinutes(getDate(since)),
     timeStep
   );
-  console.log(diffTime);
+
   return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
 };
 
