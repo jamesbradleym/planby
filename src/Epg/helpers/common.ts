@@ -54,6 +54,7 @@ export const getDate = (date: DateTime) => new Date(date);
 const abs = (num: number) => Math.abs(num);
 interface TimeWidth {
   timeWidth: number;
+  subTimeWidth: number;
   startDate: DateTime;
   endDate: DateTime;
   timeStep: string;
@@ -61,6 +62,7 @@ interface TimeWidth {
 }
 export const getTimeWidthResources = ({
   timeWidth,
+  subTimeWidth,
   startDate,
   endDate,
   timeStep,
@@ -83,11 +85,20 @@ export const getTimeWidthResources = ({
 
   const numberOfTicksPerRange = differenceInTime(endDateTime, startDateTime, timeStep)
   const numberOfTicksPerSubRange = subTicks;
-  const subTimeWidth = Math.floor(timeWidth / numberOfTicksPerRange);
-  const newTimeWidth = subTimeWidth * numberOfTicksPerRange;
+  const newSubTimeWidth = () => {
+    switch (subTimeWidth) {
+      case null:
+        return Math.floor(timeWidth / numberOfTicksPerRange);
+      default:
+        return subTimeWidth;
+    }
+  }
+
+  // const subTimeWidth = Math.floor(timeWidth / numberOfTicksPerRange);
+  const newTimeWidth = newSubTimeWidth() * numberOfTicksPerRange;
 
   return {
-    subTimeWidth: abs(subTimeWidth),
+    subTimeWidth: abs(newSubTimeWidth()),
     timeWidth: abs(newTimeWidth),
     numberOfTicksPerRange: abs(numberOfTicksPerRange),
     numberOfTicksPerSubRange: abs(numberOfTicksPerSubRange),
