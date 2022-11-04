@@ -35,6 +35,7 @@ export const TIME_FORMAT = {
   DEFAULT: "yyyy-MM-dd HH:mm:ss",
   DATE: "yyyy-MM-dd",
   MONTH_DAY: "MM/dd",
+  MONTH_DAY_YEAR: "MM/dd/YY",
   HOURS_MIN: "HH:mm",
   BASE_HOURS_TIME: "h:mm a",
 };

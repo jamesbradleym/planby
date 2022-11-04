@@ -48,6 +48,11 @@ export function useProgram<T extends ProgramItem>({
     return TIME_FORMAT.MONTH_DAY;
   };
 
+  const setMonthDayYearFormat = () => {
+    if (isBaseTimeFormat) return TIME_FORMAT.BASE_HOURS_TIME;
+    return TIME_FORMAT.MONTH_DAY_YEAR;
+  };
+
   const getRTLSinceTime = (since: string | number | Date) =>
     isRTL ? till : since;
   const getRTLTillTime = (till: string | number | Date) =>
