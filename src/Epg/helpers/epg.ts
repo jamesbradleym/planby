@@ -7,7 +7,7 @@ import { Channel, Program } from "./interfaces";
 import { ProgramWithPosition, Position, DateTime } from "./types";
 
 // Import variables
-import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER } from "./variables";
+// import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER } from "./variables";
 
 // Import functions
 import { differenceInTime } from "./functions";
