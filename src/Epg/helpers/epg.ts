@@ -21,23 +21,23 @@ import {
 import { getDate } from "./common";
 
 // -------- Program width --------
-const getItemDiffWidth = (diff: number, subTimeWidth: number, timeStep: string) => {
-  console.log(diff, subTimeWidth, timeStep);
-  switch (timeStep) {
-    case "hour":
-      return (diff * subTimeWidth) / MINUTES_IN_HOUR;
-    case "day":
-      return (diff * subTimeWidth) / HOURS_IN_DAY;
-    case "week":
-      return (diff * subTimeWidth) / DAYS_IN_WEEK;
-    case "month":
-      return (diff * subTimeWidth) / AVG_WEEKS_IN_MONTH;
-    case "quarter":
-      return (diff * subTimeWidth) / MONTHS_IN_QUARTER;
-    default:
-      return (diff * subTimeWidth) / MINUTES_IN_HOUR;
-  }
-}
+// const getItemDiffWidth = (diff: number, subTimeWidth: number, timeStep: string) => {
+//   console.log(diff, subTimeWidth, timeStep);
+//   switch (timeStep) {
+//     case "hour":
+//       return (diff * subTimeWidth) / MINUTES_IN_HOUR;
+//     case "day":
+//       return (diff * subTimeWidth) / HOURS_IN_DAY;
+//     case "week":
+//       return (diff * subTimeWidth) / DAYS_IN_WEEK;
+//     case "month":
+//       return (diff * subTimeWidth) / AVG_WEEKS_IN_MONTH;
+//     case "quarter":
+//       return (diff * subTimeWidth) / MONTHS_IN_QUARTER;
+//     default:
+//       return (diff * subTimeWidth) / MINUTES_IN_HOUR;
+//   }
+// }
 
 export const getPositionX = (
   since: DateTime,
