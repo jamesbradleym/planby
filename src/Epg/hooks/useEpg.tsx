@@ -50,6 +50,7 @@ interface useEpgProps {
   theme?: Theme;
   globalStyles?: string;
   timeWidth?: number;
+  subTimeWidth?: number;
   timeStep?: string;
   subTicks?: number;
   sidebarWidth?: number;
