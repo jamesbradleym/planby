@@ -96,7 +96,7 @@ export const getTimeWidthResources = ({
 
   // const subTimeWidth = Math.floor(timeWidth / numberOfTicksPerRange);
   const newTimeWidth = newSubTimeWidth() * numberOfTicksPerRange;
-  console.log(newTimeWidth, newSubTimeWidth(), subTimeWidth);
+  
   return {
     subTimeWidth: abs(newSubTimeWidth()),
     timeWidth: abs(newTimeWidth),
