@@ -108,6 +108,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
             program: options,
             isRTL,
             isBaseTimeFormat,
+            timeStep
           });
         return (
           <Program
@@ -140,7 +141,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         timeStep,
         startDate
       };
-      
+
       if (renderTimeline) {
         return renderTimeline({ ...timeProps, ...props });
       }
