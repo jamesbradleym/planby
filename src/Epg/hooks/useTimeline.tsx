@@ -15,7 +15,7 @@ export function useTimeline(
   const dividers = generateArray(numberOfTicksPerSubRange);
 
   const formatTime = (startDate: DateTime, index: number, timeStep: string) => {
-    
+
     switch (timeStep) {
       case "hour": {
         const time = index < 10 ? `0${index}` : index;
@@ -64,7 +64,7 @@ export function useTimeline(
           minutes: 0,
           seconds: 0,
         })
-        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
+        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY_YEAR);
         return timeFormat.toLowerCase().replace(/\s/g, "");
       }
       case "quarter": {
@@ -77,7 +77,7 @@ export function useTimeline(
           minutes: 0,
           seconds: 0,
         })
-        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY);
+        const timeFormat = format(result, TIME_FORMAT.MONTH_DAY_YEAR);
         return timeFormat.toLowerCase().replace(/\s/g, "");
       }
       default: {
