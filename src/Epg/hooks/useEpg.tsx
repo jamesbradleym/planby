@@ -10,6 +10,7 @@ import { DateTime, BaseTimeFormat, Position } from "../helpers/types";
 // Import helpers
 import {
   TIME_WIDTH,
+  SUB_TIME_WIDTH,
   TIME_STEP,
   TIME_TICKS,
   ITEM_HEIGHT,
@@ -71,6 +72,7 @@ export function useEpg({
   theme: customTheme,
   globalStyles,
   timeWidth: customTimeWidth = TIME_WIDTH,
+  subTimeWidth: customSubTimeWidth = SUB_TIME_WIDTH,
   timeStep: customTimeStep = TIME_STEP,
   subTicks: customSubTicks = TIME_TICKS,
   sidebarWidth = SIDEBAR_WIDTH,
@@ -88,8 +90,8 @@ export function useEpg({
   // Get day and hour width of the day
   const { subTimeWidth, timeWidth, ...timeWidthResourcesProps } = React.useMemo(
     () =>
-      getTimeWidthResources({ timeWidth: customTimeWidth, startDate, endDate, timeStep: customTimeStep, subTicks: customSubTicks }),
-    [customTimeWidth, startDate, endDate, customTimeStep, customSubTicks]
+      getTimeWidthResources({ timeWidth: customTimeWidth, subTimeWidth: customSubTimeWidth, startDate, endDate, timeStep: customTimeStep, subTicks: customSubTicks }),
+    [customTimeWidth, customSubTimeWidth, startDate, endDate, customTimeStep, customSubTicks]
   );
 
   // -------- Effects --------
