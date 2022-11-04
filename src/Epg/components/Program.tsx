@@ -16,6 +16,7 @@ import { useProgram } from "../hooks";
 interface ProgramProps<T> {
   isRTL?: boolean;
   isBaseTimeFormat: BaseTimeFormat;
+  timeStep?: string;
   program: T;
   onClick?: (v: ProgramType) => void;
 }
