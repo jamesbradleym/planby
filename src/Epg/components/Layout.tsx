@@ -60,6 +60,7 @@ interface LayoutProps {
     program: ProgramItem;
     isRTL: boolean;
     isBaseTimeFormat: BaseTimeFormat;
+    timeStep: string;
   }) => React.ReactNode;
   renderChannel?: (v: { channel: ChannelWithPosiiton }) => React.ReactNode;
   renderTimeline?: (v: RenderTimeline) => React.ReactNode;
@@ -115,6 +116,7 @@ export const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
             key={program.data.id}
             isRTL={isRTL}
             isBaseTimeFormat={isBaseTimeFormat}
+            timeStep={timeStep}
             program={options}
           />
         );
