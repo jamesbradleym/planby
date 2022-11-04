@@ -57,7 +57,8 @@ export const getPositionX = (
       getDate(startDate),
       timeStep
     );
-    return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
+    return diffTime * subTimeWidth;
+    // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
   }
 
   if (isYesterday) {
@@ -66,7 +67,8 @@ export const getPositionX = (
       getDate(startDate),
       timeStep
     );
-    return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
+    return diffTime * subTimeWidth;
+    // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
   }
 
   if (isTomorrow) {
@@ -77,7 +79,8 @@ export const getPositionX = (
     );
 
     if (diffTime < 0) return 0;
-    return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
+    return diffTime * subTimeWidth;
+    // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
   }
 
   const diffTime = differenceInTime(
@@ -86,7 +89,8 @@ export const getPositionX = (
     timeStep
   );
 
-  return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
+  return diffTime * subTimeWidth;
+  // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
 };
 
 // -------- Channel position in the Epg --------
