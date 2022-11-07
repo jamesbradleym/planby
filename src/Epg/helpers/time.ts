@@ -1,4 +1,4 @@
-import { format, roundToNearestMinutes, startOfDay, addDays } from "date-fns";
+import { format, roundToNearestMinutes, addDays } from "date-fns";
 
 // Import types
 import { DateTime as DateRangeTime } from "./types";
