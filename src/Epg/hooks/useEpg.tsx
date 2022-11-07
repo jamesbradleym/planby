@@ -100,7 +100,7 @@ export function useEpg({
   const { subTimeWidth, timeWidth, ...timeWidthResourcesProps } = React.useMemo(
     () =>
       getTimeWidthResources({ timeWidth: customTimeWidth, subTimeWidth: customSubTimeWidth, startDate, endDate, timeStep: customTimeStep, subTicks }),
-    [customTimeWidth, customSubTimeWidth, startDateInput, endDateInput, customTimeStep, subTicks]
+    [customTimeWidth, customSubTimeWidth, customTimeStep]
   );
 
   // -------- Effects --------
