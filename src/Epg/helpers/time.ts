@@ -64,7 +64,7 @@ export const getSubTicksSetting = (
 ) => {
   let subTicksValue = subTicks;
   if (isDefault) {
-    if timeStep == "week"{
+    if (timeStep == "week") {
       subTicksValue = 7;
     } else {
       subTicksValue = 4;
