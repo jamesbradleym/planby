@@ -55,13 +55,13 @@ export function Timeline({
       <TimelineTime isBaseTimeFormat={isBaseTimeFormat} isRTL={isRTL}>
         {formatTime(startDate, index + offsetStartTimeRange, timeStep)}
       </TimelineTime>
-      <TimelineDividers>{renderDividers()}</TimelineDividers>
+      <TimelineDividers count={numberOfTicksPerSubRange}>{renderDividers()}</TimelineDividers>
     </TimelineBox>
   );
 
   const renderDividers = () =>
     dividers.map((_, index) => (
-      <TimelineDivider key={index} width={subTimeWidth} />
+      <TimelineDivider key={index} width={subTimeWidth} count={numberOfTicksPerSubRange} />
     ));
 
   return (

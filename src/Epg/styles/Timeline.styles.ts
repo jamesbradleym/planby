@@ -18,20 +18,20 @@ export const TimelineTime = styled.span<{
   ${({ isRTL }) => isRTL && `transform: scale(-1,1)`};
 `;
 
-export const TimelineDividers = styled.div`
+export const TimelineDividers = styled.div<{ count: number; }>`
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(${ count }, 1fr);
   align-items: end;
   padding-bottom: 6px;
 `;
 
-export const TimelineDivider = styled.div<{ width: number; theme?: Theme }>`
+export const TimelineDivider = styled.div<{ width: number; count: number; theme?: Theme }>`
   background: ${({ theme }) => theme.timeline.divider.bg};
   height: 10px;
   width: 1px;
-  margin-right: ${({ width }) => width / 4}px;
+  margin-right: ${({ width }) => width / count}px;
 `;
 
 export const TimelineWrapper = styled.div<{
