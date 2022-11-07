@@ -32,7 +32,7 @@ export function useTimeline(
         return `${time}:00`;
       }
       case "day": {
-        const result = add(startOfTime(new Date(startDate)), {
+        const result = add(startOfTime(new Date(startDate), timeStep), {
           years: 0,
           months: 0,
           weeks: 0,
@@ -45,7 +45,7 @@ export function useTimeline(
         return timeFormat.toLowerCase().replace(/\s/g, "");
       }
       case "week": {
-        const result = add(startOfTime(new Date(startDate)), {
+        const result = add(startOfTime(new Date(startDate), timeStep), {
           years: 0,
           months: 0,
           weeks: index,
@@ -58,7 +58,7 @@ export function useTimeline(
         return timeFormat.toLowerCase().replace(/\s/g, "");
       }
       case "month": {
-        const result = add(startOfTime(new Date(startDate)), {
+        const result = add(startOfTime(new Date(startDate), timeStep), {
           years: 0,
           months: index,
           weeks: 0,
@@ -71,7 +71,7 @@ export function useTimeline(
         return timeFormat.toLowerCase().replace(/\s/g, "");
       }
       case "quarter": {
-        const result = add(startOfTime(new Date(startDate)), {
+        const result = add(startOfTime(new Date(startDate), timeStep), {
           years: 0,
           months: index*3,
           weeks: 0,
