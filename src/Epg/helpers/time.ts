@@ -59,11 +59,11 @@ export const getTimeRangeDates = (
 
 export const getSubTicksSetting = (
   subTicks: number,
-  default: bool,
+  isDefault: bool,
   timeStep: string
 ) => {
   let subTicksValue = subTicks;
-  if (default) {
+  if (isDefault) {
     if timeStep == "week"{
       subTicksValue = 7;
     } else {
