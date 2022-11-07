@@ -88,7 +88,7 @@ export const getPositionX = (
     roundToMinutes(getDate(since)),
     timeStep
   );
-  console.log(diffTime, subTimeWidth);
+  console.log(since, till, diffTime, subTimeWidth);
   return diffTime * subTimeWidth;
   // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
 };
@@ -121,7 +121,7 @@ export const getProgramPosition = (
     till: formatTime(program.till),
   };
   const isYesterday = isYesterdayTime(item.since, startDate);
-
+  console.log("width:");
   let width = getPositionX(
     item.since,
     item.till,
@@ -131,6 +131,7 @@ export const getProgramPosition = (
     timeStep
   );
   const top = itemHeight * channelIndex;
+  console.log("left:");
   let left = getPositionX(startDate, item.since, startDate, endDate, subTimeWidth, timeStep);
   const edgeEnd = getPositionX(
     startDate,
