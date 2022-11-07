@@ -121,7 +121,7 @@ export const getProgramPosition = (
     till: formatTime(program.till),
   };
   const isYesterday = isYesterdayTime(item.since, startDate);
-  
+
   let width = getPositionX(
     item.since,
     item.till,
@@ -131,7 +131,7 @@ export const getProgramPosition = (
     timeStep
   );
   const top = itemHeight * channelIndex;
-  console.log("left:");
+  
   let left = getPositionX(startDate, item.since, startDate, endDate, subTimeWidth, timeStep);
   const edgeEnd = getPositionX(
     startDate,
