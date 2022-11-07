@@ -49,7 +49,7 @@ export const getPositionX = (
 ) => {
   const isTomorrow = getTime(getDate(till)) > getTime(getDate(endDate));
   const isYesterday = getTime(getDate(since)) < getTime(getDate(startDate));
-  
+
   // When time range is set to 1 hour and program time is greater than 1 hour
   if (isYesterday && isTomorrow) {
     const diffTime = differenceInTime(
@@ -88,7 +88,7 @@ export const getPositionX = (
     roundToMinutes(getDate(since)),
     timeStep
   );
-
+  console.log(diffTime, subTimeWidth);
   return diffTime * subTimeWidth;
   // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
 };
