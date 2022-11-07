@@ -90,7 +90,7 @@ export function useEpg({
     customTimeStep
   );
 
-  const subTicks = getSubTicksSetting(
+  const { subTicks } = getSubTicksSetting(
     customSubTicks,
     customSubTicks==TIME_TICKS,
     customTimeStep
