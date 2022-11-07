@@ -82,6 +82,7 @@ export const getTimeWidthResources = ({
     startOfTime(startDateTime, timeStep),
     timeStep
   );
+  console.log(offsetStartTimeRange);
 
   const numberOfTicksPerRange = differenceInTime(endDateTime, startDateTime, timeStep)
   const numberOfTicksPerSubRange = subTicks;

@@ -88,7 +88,7 @@ export const getPositionX = (
     roundToMinutes(getDate(since)),
     timeStep
   );
-  console.log(since, till, diffTime, subTimeWidth);
+  
   return diffTime * subTimeWidth;
   // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
 };
