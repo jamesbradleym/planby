@@ -85,7 +85,8 @@ export function useEpg({
   // Get converted start and end dates
   const { startDate, endDate } = getTimeRangeDates(
     startDateInput,
-    endDateInput
+    endDateInput,
+    timeStep
   );
 
   // Get day and hour width of the day

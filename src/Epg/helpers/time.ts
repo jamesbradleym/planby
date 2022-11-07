@@ -6,6 +6,9 @@ import { DateTime as DateRangeTime } from "./types";
 // Variables
 import { TIME_FORMAT } from "./variables";
 
+// Import Functions
+import { startOfTime, endOfTime } from "./functions";
+
 type DateTime = number | string | Date;
 
 const getTime = (date: DateTime) => new Date(date).getTime();
@@ -38,12 +41,14 @@ export const isFutureTime = (date: DateTime) => {
 
 export const getTimeRangeDates = (
   startDate: DateRangeTime,
-  endDate: DateRangeTime
+  endDate: DateRangeTime,
+  timeStep: string,
 ) => {
   let endDateValue = endDate;
   if (endDate === "") {
     endDateValue = formatTime(startOfDay(addDays(new Date(startDate), 1)));
   }
-
-  return { startDate, endDate: endDateValue };
+  startDateValue = startOfTime(startDateValue, timeStep);
+  endDateValue = endOfTime(endDateValue, timeStep);
+  return { startDate: startDateValue, endDate: endDateValue };
 };
