@@ -1,4 +1,4 @@
-import { differenceInHours, differenceInCalendarDays, differenceInCalendarWeeks, differenceInCalendarMonths, differenceInCalendarQuarters, startOfDay, startOfWeek, startOfMonth, startOfQuarter, startOfYear } from "date-fns";
+import { differenceInHours, differenceInCalendarDays, differenceInCalendarWeeks, differenceInCalendarMonths, differenceInCalendarQuarters, startOfDay, startOfWeek, startOfMonth, startOfQuarter, startOfYear, endOfDay, endOfWeek, endOfMonth, endOfQuarter } from "date-fns";
 
 export function differenceInTime(endDateTime:Date, startDateTime:Date, timeStep:string) {
   switch (timeStep) {
@@ -31,5 +31,22 @@ export function startOfTime(dateTime:Date, timeStep:string) {
       return startOfYear(dateTime);
     default:
       return startOfDay(dateTime);
+  }
+}
+
+export function endOfTime(dateTime:Date, timeStep:string) {
+  switch (timeStep) {
+    case "hour":
+      return endOfDay(dateTime);
+    case "day":
+      return endOfWeek(dateTime);
+    case "week":
+      return endOfMonth(dateTime);
+    case "month":
+      return endOfQuarter(dateTime);
+    case "quarter":
+      return endOfYear(dateTime);
+    default:
+      return endOfDay(dateTime);
   }
 }

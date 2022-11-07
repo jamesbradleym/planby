@@ -1,6 +1,6 @@
 import { useLayoutEffect, useEffect } from "react";
 import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER } from "./variables";
-import { differenceInTime, startOfTime } from "./functions"
+import { differenceInTime, startOfTime, endOfTime } from "./functions"
 
 type DateTime = string | number | Date;
 
@@ -76,16 +76,14 @@ export const getTimeWidthResources = ({
       `Invalid endDate property. Value of endDate must be greater than startDate. Props: startDateTime: ${startDateTime}, endDateTime: ${endDateTime}`
     );
   }
-  console.log("Offset Start Time Range: ");
+
   const offsetStartTimeRange = differenceInTime(
     startDateTime,
     startOfTime(startDateTime, timeStep),
     timeStep
   );
-  console.log(startDateTime);
-  console.log(startDateTime, startOfTime(startDateTime, timeStep), timeStep, offsetStartTimeRange);
 
-  const numberOfTicksPerRange = differenceInTime(endDateTime, startDateTime, timeStep)
+  const numberOfTicksPerRange = differenceInTime(endOfTime(endDateTime, timeStep), startOfTime(startDateTime, timeStep), timeStep)
   const numberOfTicksPerSubRange = subTicks;
   const newSubTimeWidth = () => {
     switch (subTimeWidth) {
