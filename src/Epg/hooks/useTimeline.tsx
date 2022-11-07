@@ -4,7 +4,10 @@ import { format, add } from "date-fns";
 import { BaseTimeFormat, DateTime } from "../helpers/types";
 
 // Import helpers
-import { TIME_FORMAT, generateArray, startOfTime } from "../helpers";
+import { TIME_FORMAT, generateArray } from "../helpers";
+
+// Import functions
+import { startOfTime } from "../helpers/functions";
 
 export function useTimeline(
   numberOfTicksPerRange: number,
