@@ -13,6 +13,8 @@ type DateTime = number | string | Date;
 
 const getTime = (date: DateTime) => new Date(date).getTime();
 
+import { getDate } from "./common";
+
 export const getLiveStatus = (since: DateTime, till: DateTime) => {
   const nowTime = getTime(new Date());
   const sinceTime = getTime(since);
@@ -44,12 +46,12 @@ export const getTimeRangeDates = (
   endDate: DateRangeTime,
   timeStep: string,
 ) => {
-  let startDateValue = startOfTime(startDate, timeStep);
+  let startDateValue = startOfTime(getDate(startDate), timeStep);
   let endDateValue = endDate;
   if (endDate === "") {
     endDateValue = formatTime(endOfTime(addDays(new Date(startDate), 1), timeStep));
   } else {
-    endDateValue = endOfTime(endDate, timeStep);
+    endDateValue = endOfTime(getDate(endDate), timeStep);
   }
   // startDateValue = formatTime(startOfTime(startDateValue, timeStep));
   return { startDate: startDateValue, endDate: endDateValue };
