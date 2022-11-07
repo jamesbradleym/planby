@@ -99,8 +99,8 @@ export function useEpg({
   // Get day and hour width of the day
   const { subTimeWidth, timeWidth, ...timeWidthResourcesProps } = React.useMemo(
     () =>
-      getTimeWidthResources({ timeWidth: customTimeWidth, subTimeWidth: customSubTimeWidth, startDate: startDateInput, endDate: endDateInput, timeStep: customTimeStep, subTicks: customSubTicks }),
-    [customTimeWidth, customSubTimeWidth, startDateInput, endDateInput, customTimeStep, customSubTicks]
+      getTimeWidthResources({ timeWidth: customTimeWidth, subTimeWidth: customSubTimeWidth, startDate: startDateInput, endDate: endDateInput, timeStep: customTimeStep, subTicks: subTicks }),
+    [customTimeWidth, customSubTimeWidth, startDateInput, endDateInput, customTimeStep, subTicks]
   );
 
   // -------- Effects --------
