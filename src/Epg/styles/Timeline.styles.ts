@@ -22,7 +22,7 @@ export const TimelineDividers = styled.div<{ count: number; }>`
   height: 100%;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(${ count }, 1fr);
+  grid-template-columns: repeat(${({ count }) => count}, 1fr);
   align-items: end;
   padding-bottom: 6px;
 `;
