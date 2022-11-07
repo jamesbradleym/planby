@@ -88,7 +88,8 @@ export function useEpg({
     endDateInput,
     customTimeStep
   );
-  console.log(startDate, endDate, startDateInput, endDateInput);
+  console.log(startDate, endDate);
+  console.log(startDateInput, endDateInput);
   // Get day and hour width of the day
   const { subTimeWidth, timeWidth, ...timeWidthResourcesProps } = React.useMemo(
     () =>
