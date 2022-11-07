@@ -59,7 +59,7 @@ export const getTimeRangeDates = (
 
 export const getSubTicksSetting = (
   subTicks: number,
-  isDefault: bool,
+  isDefault: boolean,
   timeStep: string
 ) => {
   let subTicksValue = subTicks;
