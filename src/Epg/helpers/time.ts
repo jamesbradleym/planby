@@ -44,13 +44,13 @@ export const getTimeRangeDates = (
   endDate: DateRangeTime,
   timeStep: string,
 ) => {
-  let startDateValue = startDate;
+  let startDateValue = formatTime(startOfTime(startDate, timeStep));
   let endDateValue = endDate;
   if (endDate === "") {
     endDateValue = formatTime(endOfTime(addDays(new Date(startDate), 1), timeStep));
   } else {
-    endDateValue = formatTime(endOfTime(endDateValue, timeStep), timeStep);
+    endDateValue = formatTime(endOfTime(endDate, timeStep), timeStep);
   }
-  startDateValue = formatTime(startOfTime(startDateValue, timeStep));
+  // startDateValue = formatTime(startOfTime(startDateValue, timeStep));
   return { startDate: startDateValue, endDate: endDateValue };
 };
