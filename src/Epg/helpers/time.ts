@@ -56,3 +56,20 @@ export const getTimeRangeDates = (
   // startDateValue = formatTime(startOfTime(startDateValue, timeStep));
   return { startDate: startDateValue, endDate: endDateValue };
 };
+
+export const getSubTicksSetting = (
+  subTicks: number,
+  default: bool,
+  timeStep: string
+) => {
+  let subTicksValue = subTicks;
+  if (default) {
+    if timeStep == "week"{
+      subTicksValue = 7;
+    } else {
+      subTicksValue = 4;
+    }
+  }
+
+  return { subTicks: subTicksValue };
+};

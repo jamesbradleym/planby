@@ -17,6 +17,7 @@ import {
   ITEM_OVERSCAN,
   getTimeWidthResources,
   getTimeRangeDates,
+  getSubTicksSetting
 } from "../helpers";
 
 // Import theme
@@ -88,8 +89,13 @@ export function useEpg({
     endDateInput,
     customTimeStep
   );
-  console.log(startDate, endDate);
-  console.log(startDateInput, endDateInput);
+
+  const subTicks = getSubTicksSetting(
+    customSubTicks,
+    customSubTicks==TIME_TICKS,
+    customTimeStep
+  );
+
   // Get day and hour width of the day
   const { subTimeWidth, timeWidth, ...timeWidthResourcesProps } = React.useMemo(
     () =>
