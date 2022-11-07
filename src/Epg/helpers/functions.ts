@@ -5,13 +5,13 @@ export function differenceInTime(endDateTime:Date, startDateTime:Date, timeStep:
     case "hour":
       return differenceInHours(endDateTime, startDateTime);
     case "day":
-      return differenceInDays(endDateTime, startDateTime);
+      return differenceInCalendarDays(endDateTime, startDateTime);
     case "week":
-      return differenceInWeeks(endDateTime, startDateTime);
+      return differenceInCalendarWeeks(endDateTime, startDateTime);
     case "month":
-      return differenceInMonths(endDateTime, startDateTime);
+      return differenceInCalendarMonths(endDateTime, startDateTime);
     case "quarter":
-      return differenceInQuarters(endDateTime, startDateTime);
+      return differenceInCalendarQuarters(endDateTime, startDateTime);
     default:
       return differenceInHours(endDateTime, startDateTime);
   }

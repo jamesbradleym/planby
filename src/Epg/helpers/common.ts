@@ -76,7 +76,7 @@ export const getTimeWidthResources = ({
       `Invalid endDate property. Value of endDate must be greater than startDate. Props: startDateTime: ${startDateTime}, endDateTime: ${endDateTime}`
     );
   }
-
+  console.log("Offset Start Time Range: ");
   const offsetStartTimeRange = differenceInTime(
     startDateTime,
     startOfTime(startDateTime, timeStep),
@@ -96,7 +96,7 @@ export const getTimeWidthResources = ({
 
   // const subTimeWidth = Math.floor(timeWidth / numberOfTicksPerRange);
   const newTimeWidth = newSubTimeWidth() * numberOfTicksPerRange;
-  
+
   return {
     subTimeWidth: abs(newSubTimeWidth()),
     timeWidth: abs(newTimeWidth),
