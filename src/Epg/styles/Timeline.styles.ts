@@ -31,7 +31,7 @@ export const TimelineDivider = styled.div<{ width: number; count: number; theme?
   background: ${({ theme }) => theme.timeline.divider.bg};
   height: 10px;
   width: 1px;
-  margin-right: ${({ width }) => width / count}px;
+  margin-right: ${({ width, count }) => width / count}px;
 `;
 
 export const TimelineWrapper = styled.div<{
