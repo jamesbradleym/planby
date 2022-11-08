@@ -125,7 +125,7 @@ export const getProgramPosition = (
   let width = getPositionX(
     item.since,
     item.till,
-    startDate,
+    startOfTime(startDate, timeStep),
     endDate,
     subTimeWidth,
     timeStep
