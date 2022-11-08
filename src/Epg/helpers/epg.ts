@@ -10,7 +10,7 @@ import { ProgramWithPosition, Position, DateTime } from "./types";
 // import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER } from "./variables";
 
 // Import functions
-import { differenceInTime } from "./functions";
+import { differenceInTime, startOfTime } from "./functions";
 
 // Import time heleprs
 import {
