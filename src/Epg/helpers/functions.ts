@@ -12,6 +12,8 @@ export function differenceInTime(endDateTime:Date, startDateTime:Date, timeStep:
       return differenceInCalendarWeeks(endDateTime, startDateTime);
     case "quarter":
       return differenceInCalendarMonths(endDateTime, startDateTime);
+    case "quarter_":
+      return differenceInCalendarQuarters(endDateTime, startDateTime);
     default:
       return differenceInHours(endDateTime, startDateTime);
   }
