@@ -136,7 +136,7 @@ export const getProgramPosition = (
   const edgeEnd = getPositionX(
     startDate,
     item.till,
-    startDate,
+    startOfTime(startDate, timeStep),
     endDate,
     subTimeWidth,
     timeStep
