@@ -19,6 +19,7 @@ export function Channel<T extends ChannelWithPosiiton>({
   ...rest
 }: ChannelProps<T>) {
   const { position, logo } = channel;
+  const logoComp = isValidHttpUrl(logo) ? <ChannelLogo src={logo} alt="Logo" /> : logo;
   return (
     <ChannelBox
       data-testid="sidebar-item"
@@ -26,7 +27,17 @@ export function Channel<T extends ChannelWithPosiiton>({
       {...position}
       {...rest}
     >
-      <ChannelLogo src={logo} alt="Logo" />
+      {logoComp}
     </ChannelBox>
   );
+}
+
+function isValidHttpUrl(string) {
+  let url;
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+  return url.protocol === "http:" || url.protocol === "https:";
 }
