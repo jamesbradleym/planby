@@ -32,10 +32,10 @@ export function Channel<T extends ChannelWithPosiiton>({
   );
 }
 
-function isValidHttpUrl(string) {
+function isValidHttpUrl(val: string) {
   let url;
   try {
-    url = new URL(string);
+    url = new URL(val);
   } catch (_) {
     return false;
   }
