@@ -10,7 +10,7 @@ import { ProgramWithPosition, Position, DateTime } from "./types";
 // import { MINUTES_IN_HOUR, HOURS_IN_DAY, DAYS_IN_WEEK, AVG_WEEKS_IN_MONTH, MONTHS_IN_QUARTER } from "./variables";
 
 // Import functions
-import { differenceInTime, startOfTime } from "./functions";
+import { differenceInTime, differenceInTimePrecise, startOfTime } from "./functions";
 
 // Import time heleprs
 import {
@@ -52,7 +52,7 @@ export const getPositionX = (
 
   // When time range is set to 1 hour and program time is greater than 1 hour
   if (isYesterday && isTomorrow) {
-    const diffTime = differenceInTime(
+    const diffTime = differenceInTimePrecise(
       roundToMinutes(getDate(endDate)),
       getDate(startDate),
       timeStep
@@ -62,7 +62,7 @@ export const getPositionX = (
   }
 
   if (isYesterday) {
-    const diffTime = differenceInTime(
+    const diffTime = differenceInTimePrecise(
       roundToMinutes(getDate(till)),
       getDate(startDate),
       timeStep
@@ -72,7 +72,7 @@ export const getPositionX = (
   }
 
   if (isTomorrow) {
-    const diffTime = differenceInTime(
+    const diffTime = differenceInTimePrecise(
       getDate(endDate),
       roundToMinutes(getDate(since)),
       timeStep
@@ -83,7 +83,7 @@ export const getPositionX = (
     // return getItemDiffWidth(diffTime, subTimeWidth, timeStep);
   }
 
-  const diffTime = differenceInTime(
+  const diffTime = differenceInTimePrecise(
     roundToMinutes(getDate(till)),
     roundToMinutes(getDate(since)),
     timeStep

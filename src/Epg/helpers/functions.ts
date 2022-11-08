@@ -3,6 +3,23 @@ import { differenceInMinutes, differenceInHours, differenceInCalendarDays, diffe
 export function differenceInTime(endDateTime:Date, startDateTime:Date, timeStep:string) {
   switch (timeStep) {
     case "hour":
+      return differenceInMinutes(endDateTime, startDateTime);
+    case "day":
+      return differenceInCalendarDays(endDateTime, startDateTime);
+    case "week":
+      return differenceInCalendarWeeks(endDateTime, startDateTime);
+    case "month":
+      return differenceInCalendarMonths(endDateTime, startDateTime);
+    case "quarter":
+      return differenceInCalendarQuarters(endDateTime, startDateTime);
+    default:
+      return differenceInHours(endDateTime, startDateTime);
+  }
+}
+
+export function differenceInTimePrecise(endDateTime:Date, startDateTime:Date, timeStep:string) {
+  switch (timeStep) {
+    case "hour":
       return differenceInMinutes(endDateTime, startDateTime)/60;
     case "day":
       return differenceInHours(endDateTime, startDateTime)/24;
