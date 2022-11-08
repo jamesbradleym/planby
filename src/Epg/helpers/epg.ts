@@ -125,18 +125,18 @@ export const getProgramPosition = (
   let width = getPositionX(
     item.since,
     item.till,
-    startOfTime(startDate, timeStep),
+    startOfTime(getDate(startDate), timeStep),
     endDate,
     subTimeWidth,
     timeStep
   );
   const top = itemHeight * channelIndex;
 
-  let left = getPositionX(startDate, item.since, startOfTime(startDate, timeStep), endDate, subTimeWidth, timeStep);
+  let left = getPositionX(startDate, item.since, startOfTime(getDate(startDate), timeStep), endDate, subTimeWidth, timeStep);
   const edgeEnd = getPositionX(
     startDate,
     item.till,
-    startOfTime(startDate, timeStep),
+    startOfTime(getDate(startDate), timeStep),
     endDate,
     subTimeWidth,
     timeStep
