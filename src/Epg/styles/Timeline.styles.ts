@@ -25,6 +25,7 @@ export const TimelineDividers = styled.div<{ count: number; }>`
   grid-template-columns: repeat(${({ count }) => count}, 1fr);
   align-items: end;
   padding-bottom: 6px;
+  color: red;
 `;
 
 export const TimelineDivider = styled.div<{ width: number; count: number; theme?: Theme }>`
