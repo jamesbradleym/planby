@@ -55,14 +55,47 @@ export function Program<T extends ProgramItem>({
 
   const handleOnContentClick = () => onClick?.(data);
 
-  const sinceTime = formatTime(
-    getRTLSinceTime(since),
-    set12HoursTimeFormat()
-  ).toLowerCase();
-  const tillTime = formatTime(
-    getRTLTillTime(till),
-    set12HoursTimeFormat()
-  ).toLowerCase();
+  // const sinceTime = formatTime(
+  //   getRTLSinceTime(since),
+  //   set12HoursTimeFormat()
+  // ).toLowerCase();
+  // const tillTime = formatTime(
+  //   getRTLTillTime(till),
+  //   set12HoursTimeFormat()
+  // ).toLowerCase();
+
+  const sinceTime = (() => {
+  switch (rest.timeStep) {
+    case "hour":
+      return formatTime(since, set12HoursTimeFormat()).toLowerCase();
+    case "day":
+      return formatTime(since, setMonthDayFormat()).toLowerCase();
+    case "week":
+      return formatTime(since, setMonthDayFormat()).toLowerCase();
+    case "month":
+      return formatTime(since, setMonthDayYearFormat()).toLowerCase();
+    case "quarter":
+      return formatTime(since, setMonthDayYearFormat()).toLowerCase();
+    default:
+      return formatTime(since, set12HoursTimeFormat()).toLowerCase();
+  }
+})();
+const tillTime = (() => {
+  switch (rest.timeStep) {
+    case "hour":
+      return formatTime(till, set12HoursTimeFormat()).toLowerCase();
+    case "day":
+      return formatTime(till, setMonthDayFormat()).toLowerCase();
+    case "week":
+      return formatTime(till, setMonthDayFormat()).toLowerCase();
+    case "month":
+      return formatTime(till, setMonthDayYearFormat()).toLowerCase();
+    case "quarter":
+      return formatTime(till, setMonthDayYearFormat()).toLowerCase();
+    default:
+      return formatTime(till, set12HoursTimeFormat()).toLowerCase();
+  }
+})();
 
   return (
     <ProgramBox
